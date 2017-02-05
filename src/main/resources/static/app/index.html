@@ -4,11 +4,14 @@
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ShareBookApp</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
     <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.css">
     <link href="style.css" rel="stylesheet">
     <!--  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
@@ -17,24 +20,60 @@
 
    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>-->
  </head>
- <body>
+
 
 
    <!-- In production use:
    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
    -->
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
 
 
-   <div>
+   <body>
+   <!-- Barra de navegación - fixed navbar -->
+   <nav class="navbar navbar-inverse" style="background:red;">
+       <div class="container-fluid">
+           <div class="navbar-header">
+               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+               </button>
+               <a class="navbar-brand" href="#">Share-Book</a>
+           </div>
+           <div class="collapse navbar-collapse" id="myNavbar">
+               <ul class="nav navbar-nav" >
+                   <li ><a   href="#">Home</a></li>
 
-      Hola mundo soy sHAREBOOK!
+                   <li><a  href="#">Page 1</a></li>
+                   <li><a   href="#">Page 2</a></li>
+               </ul>
+               <ul class="nav navbar-nav navbar-right">
+                   <li><a  href="#"><span class="glyphicon glyphicon-user"></span>Register</a></li>
+                   <li><a  href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+               </ul>
+           </div>
+       </div>
+   </nav>
 
-   </div>
+   <!-- Contenedor central-->
+   <div class="container">
+       <div class="page-header">
+           <h1>aqui va el contenido de la Pagina</h1>
+       </div>
+       <!-- <p class="lead">test3.</p>-->
+    </div>
+
+    <!--/Pie de pagina / footer -->
+   <footer class="footer" style="background:red;" >
+       <div class="container" >
+           <p class="text-muted"><p class="copyright text-muted small">Developed by : ManFe
+       </div>
+   </footer>
+
+
 
    <script src="app.js"></script>
-
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
