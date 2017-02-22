@@ -5,9 +5,11 @@ angular.module('myApp', [
   'ngRoute',
   'myApp.detalleLibro',
   'myApp.publicarLibro',
+  'myApp.librosDisponibles',
   'services.fabricaLibro'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
-  //$routeProvider.otherwise({redirectTo: '/index'});
+
+    $routeProvider.otherwise({redirectTo: '/publicarLibro'});
 }]);
