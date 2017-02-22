@@ -12,5 +12,5 @@ angular.module('myApp.detalleLibro', ['ngRoute'])
 .controller('ControlLibroDetalle', ['$scope', 'factoryLibro', function ($scope, factoryLibro) {
 
 
-   $scope.libroActual= factoryLibro.getLibro();
+   $scope.libroActual= factoryLibro.getLibroActual();
 }]);
