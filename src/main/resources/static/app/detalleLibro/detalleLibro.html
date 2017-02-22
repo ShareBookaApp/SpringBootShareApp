@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <title>ShareBookApp</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.css">
+  <link href="style.css" rel="stylesheet">
+  <!--  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+ <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+
+
+ <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>-->
+</head>
+<body>
+<!-- Barra de navegación - fixed navbar -->
+<nav class="navbar navbar-inverse" style="background:red;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Share-Book</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav" >
+        <li ><a   href="#">Home</a></li>
+
+        <li><a href="#/detalleLibro">Detalle Libro</a></li>
+        <li><a   href="#">Page 2</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a  href="#"><span class="glyphicon glyphicon-user"></span>Register</a></li>
+        <li><a  href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Contenedor central-->
+<div class="container">
+  <div class="page-header">
+    <p>Eston son los detalles del libro</p>
+    <p>
+    <div  ng-show="authenticated">
+      <p>Nombre: </p> <p>libroActual.nombre</p>
+    </div>
+    <div  ng-show="!authenticated">
+      Please Log In :)
+    </div>
+    </p>
+  </div>
+  <!-- <p class="lead">test3.</p>-->
+</div>
+
+<!--/Pie de pagina / footer -->
+<footer class="footer" style="background:red;" >
+  <div class="container" >
+    <p class="text-muted"><p class="copyright text-muted small">
+  </div>
+</footer>
+
+
+
+<script src="app.js"></script>
+<script src="detalleLibro/detalleLibro.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="components/version/version.js"></script>
+<script src="components/version/version-directive.js"></script>
+<script src="components/version/interpolate-filter.js"></script>
+</body>
+
+
