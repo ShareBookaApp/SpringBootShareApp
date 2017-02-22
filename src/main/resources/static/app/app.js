@@ -4,6 +4,7 @@
 angular.module('myApp', [
   'ngRoute',
   'myApp.detalleLibro',
+  'myApp.publicarLibro',
   'services.fabricaLibro'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {

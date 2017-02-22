@@ -3,7 +3,6 @@ angular.module('services.fabricaLibro', ['ngRoute'])
 
     .factory('fabricaLibro', function () {
         var data = {
-            libroActual: [],
             listado: [
             {"id":'1', "nombre":'El Alquimista', "editorial":'Norma', "autor":'Paulo Coelho'}
             ]
