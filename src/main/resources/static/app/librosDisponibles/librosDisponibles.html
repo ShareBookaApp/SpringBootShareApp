@@ -7,7 +7,13 @@
         <td>{{todo.nombre}}</td>
         <td>{{todo.editorial}}</td>
         <td>{{todo.autor}}</td>
+        <td><button class="btn btn-default" ng-click="showConfirm(todo)">Detalles</button></td>
       </tr>
       </tbody>
     </table>
     </p>
+    <div ng-if="status" id="status">
+        <b layout="row" layout-align="center center" class="md-padding">
+            {{status}}
+        </b>
+    </div>

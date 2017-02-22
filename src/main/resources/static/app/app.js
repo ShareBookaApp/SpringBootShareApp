@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
   'ngRoute',
+  'ngMaterial',
   'myApp.detalleLibro',
   'myApp.publicarLibro',
   'myApp.librosDisponibles',
