@@ -6,20 +6,54 @@
 <head>
     <title>ShareBookApp</title>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
-    <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.css">
-    <link href="style.css" rel="stylesheet">
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <!--Angular material-->
+    <script src="bower_components/angular-material/angular-material.js"></script>
+
+    <!-- Google Maps Javascript API -->
+
+
     <!--  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
 
 
    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>-->
- </head>
+    <!-- Barra de navegación - fixed navbar -->
+
+    <nav class="navbar navbar-inverse" style="background:red;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Share-Book</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav" >
+                    <li ><a   href="#">Home</a></li>
+
+                    <li><a href="#!/publicarLibro">Publicar Libro</a></li>
+                    <li><a href="#!/librosDisponibles">Libros Disponibles</a></li>
+                    <li><a href="#!/mapa">Mapa de libros</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a  href="#"><span class="glyphicon glyphicon-user"></span>Register</a></li>
+                    <li><a  href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</head>
 
 
 
@@ -29,36 +63,11 @@
 
 
    <body>
-   <!-- Barra de navegación - fixed navbar -->
-   <nav class="navbar navbar-inverse" style="background:red;">
-       <div class="container-fluid">
-           <div class="navbar-header">
-               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                   <span class="icon-bar"></span>
-                   <span class="icon-bar"></span>
-                   <span class="icon-bar"></span>
-               </button>
-               <a class="navbar-brand" href="#">Share-Book</a>
-           </div>
-           <div class="collapse navbar-collapse" id="myNavbar">
-               <ul class="nav navbar-nav" >
-                   <li ><a   href="#">Home</a></li>
-
-                   <li><a  href="#">Page 1</a></li>
-                   <li><a   href="#">Page 2</a></li>
-               </ul>
-               <ul class="nav navbar-nav navbar-right">
-                   <li><a  href="#"><span class="glyphicon glyphicon-user"></span>Register</a></li>
-                   <li><a  href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-               </ul>
-           </div>
-       </div>
-   </nav>
 
    <!-- Contenedor central-->
    <div class="container">
        <div class="page-header">
-           <h1>aqui va el contenido de la Pagina</h1>
+           <div ng-view></div>
        </div>
        <!-- <p class="lead">test3.</p>-->
     </div>
@@ -66,15 +75,22 @@
     <!--/Pie de pagina / footer -->
    <footer class="footer" style="background:red;" >
        <div class="container" >
-           <p class="text-muted"><p class="copyright text-muted small">Developed by : ManFe
+           <p class="text-muted"><p class="copyright text-muted small">
        </div>
    </footer>
 
-
+   <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+   <script src="/app/bower_components/lodash/dist/lodash.js"></script>
+   <script src="/app/bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
 
    <script src="app.js"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <script src="components/version/version.js"></script>
+   <script src="publicarLibro/publicarLibro.js"></script>
+   <script src="librosDisponibles/librosDisponibles.js"></script>
+   <script src="mapa/mapa.js"></script>
+   <script src="services/fabricaLibro.js"></script>
+
+
+   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
 </body>
