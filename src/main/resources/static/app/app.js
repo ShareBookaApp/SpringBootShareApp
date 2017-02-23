@@ -4,7 +4,6 @@
 angular.module('myApp', [
   'ngRoute',
   'ngMaterial',
-  'myApp.detalleLibro',
   'myApp.publicarLibro',
   'myApp.librosDisponibles',
   'services.fabricaLibro'

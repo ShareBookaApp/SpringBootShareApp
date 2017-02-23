@@ -11,9 +11,6 @@ angular.module('services.fabricaLibro', ['ngRoute'])
             getListado: function () {
                 return data.listado;
             },
-            getLibroActual: function () {
-                 return data.listado[0];
-            },
             addTodo: function (todo) {
                 data.listado.push(todo);
             }};
