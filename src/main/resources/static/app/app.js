@@ -4,6 +4,8 @@
 angular.module('myApp', [
   'ngRoute',
   'ngMaterial',
+  'uiGmapgoogle-maps',
+  'appMaps',
   'myApp.publicarLibro',
   'myApp.librosDisponibles',
   'services.fabricaLibro'
