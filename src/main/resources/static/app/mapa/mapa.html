@@ -37,8 +37,7 @@
                         draggable="true"
                         options="map.options"
                         control="map.control">
-        <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
-        </ui-gmap-marker>
+        <ui-gmap-markers models="map.markers" coords="'self'" options="'options'" isLabel="true"></ui-gmap-markers>
     </ui-gmap-google-map>
 </div>
 
