@@ -29,8 +29,10 @@
             left: 0;
         }
     </style>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
@@ -49,32 +51,39 @@
    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>-->
     <!-- Barra de navegación - fixed navbar -->
 
-    <nav class="navbar navbar-inverse" style="background:red;">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Share-Book</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav" >
-                    <li ><a   href="#">Home</a></li>
+    <style type="text/css">
+        [ng\:cloak], [ng-cloak], .ng-cloak {
+        display: none !important;
+    }
+    </style>
 
-                    <li><a href="#!/publicarLibro">Publicar Libro</a></li>
-                    <li><a href="#!/librosDisponibles">Libros Disponibles</a></li>
-                    <li ><a href="/app/mapa/mapa.html">Mapa de libros</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a  href="#"><span class="glyphicon glyphicon-user"></span>Register</a></li>
-                    <li><a  href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>
+    <body ng-app="hello" ng-cloak class="ng-cloak">
+        <nav class="navbar navbar-inverse" style="background:red;">
+            <div ng-controller="loginCtrl" class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Share-Book</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav" >
+                        <li ><a   href="#">Home</a></li>
+                        <li><a href="#!/publicarLibro">Publicar Libro</a></li>
+                        <li><a href="#!/librosDisponibles">Libros Disponibles</a></li>
+                        <li ><a href="/app/mapa/mapa.html">Mapa de libros</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a ng-show="!authenticated" href="#!/register"><span class="glyphicon glyphicon-user"></span>Register</a></li>
+                        <li><a ng-show="!authenticated" href="#!/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                        <li><a ng-show="authenticated" href="#" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span>Lqogout</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
-</head>
+        </nav>
+    </head>
 
 
 
@@ -83,7 +92,6 @@
    -->
 
 
-   <body>
 
    <!-- Contenedor central-->
    <div class="container">
@@ -103,8 +111,11 @@
    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyC12dLsVy6QgFB1dTFrjIPc_BJm1RbIImU"></script>
    <script src='bower_components/lodash/dist/lodash.compat.js'></script>
    <script src='bower_components/angular-google-maps/dist/angular-google-maps.js'></script>
+   <script src='bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js'></script>
 
    <script src="app.js"></script>
+   <script src="login/login.js"></script>
+   <script src="registro/registro.js"></script>
    <script src="publicarLibro/publicarLibro.js"></script>
    <script src="librosDisponibles/librosDisponibles.js"></script>
    <script src="mapa/mapa.js"></script>
