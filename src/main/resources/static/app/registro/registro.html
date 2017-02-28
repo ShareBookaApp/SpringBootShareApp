@@ -1,0 +1,19 @@
+ <form role="form" ng-submit="registro()">
+        <div class="form-group">
+            <label for="name">NameComplete:</label> <input type="text"
+                                                           class="form-control" id="name" name="namecom" ng-model="credentials.namecom"/>
+        </div>
+         <div class="form-group">
+             <label for="e-mail">E-mail:</label> <input type="text"
+                                                            class="form-control" id="e-mail" name="email" ng-model="credentials.email"/>
+         </div>
+        <div class="form-group">
+            <label for="password">Password:</label> <input type="password"
+                                                           class="form-control" id="password" name="password" ng-model="credentials.password"/>
+        </div>
+         <div class="form-group">
+             <label for="confirmPassword">Confirm Password:</label> <input type="password"
+                                                            class="form-control" id="confirmPassword" name="confirmpassword" ng-model="credentials.confirmpassword"/>
+         </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+ </form>
