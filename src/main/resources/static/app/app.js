@@ -6,12 +6,14 @@ angular.module('myApp', [
   'ngMaterial',
   'uiGmapgoogle-maps',
   'appMaps',
+  'ngAnimate',
+  'ui.bootstrap',
+  'myApp.login',
+  'myApp.registro',
   'myApp.publicarLibro',
   'myApp.librosDisponibles',
   'services.fabricaLibro'
 ]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
-
-    $routeProvider.otherwise({redirectTo: '/publicarLibro'});
-}]);
+config(['$locationProvider', '$routeProvider', '$httpProvider', function($locationProvider, $routeProvider, $httpProvider) {
+    $locationProvider.hashPrefix('!');
+    $routeProvider.otherwise({redirectTo: '/login'});$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'}]);
