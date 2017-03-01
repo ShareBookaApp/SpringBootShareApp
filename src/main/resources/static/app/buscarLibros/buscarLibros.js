@@ -1,13 +1,39 @@
 'use strict';
 
-angular.module('myApp.view2', ['ngRoute'])
+angular.module('myApp.buscarLibros', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/view2', {
-    templateUrl: 'view2/view2.html',
-    controller: 'View2Ctrl'
+  $routeProvider.when('/buscarLibros', {
+    templateUrl: 'buscarLibros/buscarLibros.html',
+    controller: 'buscarLibrosCtrl'
   });
 }])
+
+.controller('buscarLibrosCtrl', ['$scope','fabricaLibro',function($scope,fabricaLibro) {
+    $scope.showConfirm = function(ev) {
+       $scope.listado= fabricaLibro.getListado();
+       for(var i =0;i<$scope.listado.length;i++){
+       if(ev===$scope.listado[i].nombre){
+
+                           document.getElementById('status').innerHTML = 'Id:'+$scope.listado[i].id+ "  Nombre: "+$scope.listado[i].nombre+ "  Editorial: "+$scope.listado[i].editorial+"  Autor: "+ $scope.listado[i].autor;
+                    break;
+                  }
+                  else{
+
+                   document.getElementById('status').innerHTML = "El libro no se encuentra disponible.";
+
+                        }
+       }
+           // Appending dialog to document.body to cover sidenav in docs ap
+           }
+
+
+
+
+     //$scope.listado= fabricaMisLibro.getListado();
+
+}]  );
+
 /*
 .controller('View2Ctrl', ['$scope','Items',function($scope,Items) {
 

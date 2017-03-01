@@ -9,7 +9,7 @@ angular.module('myApp.misLibros', ['ngRoute'])
   });
 }])
 
-.controller('misLibrosCtrl', ['$scope','Items',function($scope,Items) {
-     $scope.listado= Items.query();
+.controller('misLibrosCtrl', ['$scope','fabricaMisLibro',function($scope,fabricaMisLibro) {
+     $scope.listado= fabricaMisLibro.getListado();
 
 }]  );

@@ -13,6 +13,7 @@ angular.module('myApp', [
   'myApp.publicarLibro',
   'myApp.librosDisponibles',
   'myApp.misLibros',
+  'myApp.buscarLibros',
   'services.fabricaLibro'
 ]).
 config(['$locationProvider', '$routeProvider', '$httpProvider', function($locationProvider, $routeProvider, $httpProvider) {

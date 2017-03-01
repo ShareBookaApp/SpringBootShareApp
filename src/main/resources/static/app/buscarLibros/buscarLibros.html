@@ -1,11 +1,29 @@
-<div ng-controller="View2Ctrl">
-    <form ng-submit="addtodo()">
-    <h1>NOMBRE:</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<h2 > BUSCAR LIBROS</h2>
+<div ng-controller="buscarLibrosCtrl">
+    <form>
+    <h1>Nombre:</h1>
     <input type="text" ng-model="nombre" >
-        <input class="btn-primary" type="submit" value="Buscar">
+        <td><button class="btn-primary" ng-click="showConfirm(nombre)">Buscar</button></td>
     </form>
 </div>
-<p>
-  Showing of 'interpolate' filter:
-  {{ 'Current version is v%VERSION%.' | interpolate }}
-</p>
+
+<div >
+    <b id="status" layout="row" layout-align="center center" class="md-padding">
+
+    </b>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
