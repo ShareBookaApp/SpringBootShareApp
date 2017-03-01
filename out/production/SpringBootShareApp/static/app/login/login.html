@@ -2,7 +2,7 @@
 
 </div>
 <div  ng-show="!authenticated">
-    <form role="form" ng-click="login()">
+    <form role="form" ng-submit="login()">
         <div class="form-group">
             <label for="username">Username:</label> <input type="text"
                                                            class="form-control" id="username" name="username" ng-model="credentials.username"/>

@@ -70,17 +70,21 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav" >
+
                         <li ><a   href="#">Home</a></li>
-                        <li><a href="#!/publicarLibro">Publicar Libro</a></li>
-                        <li><a href="#!/librosDisponibles">Libros Disponibles</a></li>
-                        <li><a href="#!/misLibros">Mis Libros</a></li>
-                        <li><a href="#!/buscarLibros">Buscar Libros </a></li>
-                        <li ><a href="/app/mapa/mapa.html">Mapa de libros</a></li>
+                      
+                        <li><a ng-show="authenticated" href="#!/publicarLibro">Publicar Libro</a></li>
+                        <li><a ng-show="authenticated" href="#!/librosDisponibles">Libros Disponibles</a></li>
+                        <li><a ng-show="authenticated" href="#!/intercambiar">Intercambiar Libros</a></li>
+                        <li><a ng-show="authenticated" href="#!/mapa">Mapa de libros</a></li>
+                         <li><a href="#!/misLibros">Mis Libros</a></li>
+                        <li><a href="#!/buscarLibros">Buscar Libros </a></li         
+
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a ng-show="!authenticated" href="#!/register"><span class="glyphicon glyphicon-user"></span>Register</a></li>
                         <li><a ng-show="!authenticated" href="#!/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                        <li><a ng-show="authenticated" href="#" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span>Lqogout</a></li>
+                        <li><a ng-show="!authenticated" href="#" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -119,12 +123,14 @@
    <script src="login/login.js"></script>
    <script src="registro/registro.js"></script>
    <script src="publicarLibro/publicarLibro.js"></script>
+        <script src="intercambiar/intercambiar.js"></script>
    <script src="librosDisponibles/librosDisponibles.js"></script>
    <script src="mapa/mapa.js"></script>
         <script src="misLibros/misLibros.js"></script>
         <script src="buscarLibros/buscarLibros.js"></script>
 
  <script src="services/fabricaLibro.js"></script>
+        <script src="services/fabricaUser.js"></script>
 
 
    <script src="components/version/version.js"></script>

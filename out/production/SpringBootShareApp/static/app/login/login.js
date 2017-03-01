@@ -31,10 +31,9 @@ angular.module('myApp.login', ['ngRoute'])
     authenticate();
     $scope.credentials = {};
     $scope.login = function () {
-        console.log($rootScope.authenticated)
         authenticate($scope.credentials, function () {
             if ($rootScope.authenticated) {
-                $location.path("/librosDisponibles");
+                $location.path("/");
                 $scope.error = false;
             } else {
                 $location.path("/login");
@@ -46,7 +45,7 @@ angular.module('myApp.login', ['ngRoute'])
     $scope.logout = function () {
                 $http.post('/logout', {}).then(function () {
                     $rootScope.authenticated = false;
-                    $location.path("/login");
+                    $location.path("/");
                  }),function (data) {
                     $rootScope.authenticated = false;
                  };
