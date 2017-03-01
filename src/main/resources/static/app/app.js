@@ -12,6 +12,8 @@ angular.module('myApp', [
   'myApp.registro',
   'myApp.publicarLibro',
   'myApp.librosDisponibles',
+  'myApp.misLibros',
+  'myApp.buscarLibros',
   'services.fabricaLibro',
   'services.fabricaUser',
   'myApp.intercambiar'
