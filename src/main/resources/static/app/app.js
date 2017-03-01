@@ -13,7 +13,9 @@ angular.module('myApp', [
   'myApp.publicarLibro',
   'myApp.librosDisponibles',
   'services.fabricaLibro',
-  'services.fabricaUser'
+  'services.fabricaUser',
+  'myApp.intercambiar'
+
 ]).
 config(['$locationProvider', '$routeProvider', '$httpProvider', function($locationProvider, $routeProvider, $httpProvider) {
     $locationProvider.hashPrefix('!');
