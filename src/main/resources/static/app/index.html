@@ -70,15 +70,14 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav" >
-                        <li ><a   href="#">Home</a></li>
-                        <li><a href="#!/publicarLibro">Publicar Libro</a></li>
-                        <li><a href="#!/librosDisponibles">Libros Disponibles</a></li>
-                        <li ><a href="/app/mapa/mapa.html">Mapa de libros</a></li>
+                        <li><a ng-show="authenticated" href="#!/publicarLibro">Publicar Libro</a></li>
+                        <li><a ng-show="authenticated" href="#!/librosDisponibles">Libros Disponibles</a></li>
+                        <li><a ng-show="authenticated" href="/app/mapa/mapa.html">Mapa de libros</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a ng-show="!authenticated" href="#!/register"><span class="glyphicon glyphicon-user"></span>Register</a></li>
                         <li><a ng-show="!authenticated" href="#!/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                        <li><a ng-show="authenticated" href="#" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span>Lqogout</a></li>
+                        <li><a ng-show="authenticated" href="#" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
                     </ul>
                 </div>
             </div>
