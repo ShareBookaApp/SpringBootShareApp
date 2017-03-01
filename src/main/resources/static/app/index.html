@@ -74,11 +74,12 @@
                         <li><a ng-show="authenticated" href="#!/librosDisponibles">Libros Disponibles</a></li>
                         <li><a ng-show="authenticated" href="#!/intercambiar">Intercambiar Libros</a></li>
                         <li><a ng-show="authenticated" href="#!/mapa">Mapa de libros</a></li>
+
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a ng-show="!authenticated" href="#!/register"><span class="glyphicon glyphicon-user"></span>Register</a></li>
                         <li><a ng-show="!authenticated" href="#!/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                        <li><a ng-show="authenticated" href="#" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+                        <li><a ng-show="!authenticated" href="#" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
                     </ul>
                 </div>
             </div>
