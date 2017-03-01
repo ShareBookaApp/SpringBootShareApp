@@ -12,6 +12,7 @@ angular.module('myApp', [
   'myApp.registro',
   'myApp.publicarLibro',
   'myApp.librosDisponibles',
+  'myApp.intercambiar',
   'services.fabricaLibro'
 ]).
 config(['$locationProvider', '$routeProvider', '$httpProvider', function($locationProvider, $routeProvider, $httpProvider) {
