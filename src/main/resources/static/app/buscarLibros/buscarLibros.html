@@ -1,0 +1,11 @@
+<div ng-controller="View2Ctrl">
+    <form ng-submit="addtodo()">
+    <h1>NOMBRE:</h1>
+    <input type="text" ng-model="nombre" >
+        <input class="btn-primary" type="submit" value="Buscar">
+    </form>
+</div>
+<p>
+  Showing of 'interpolate' filter:
+  {{ 'Current version is v%VERSION%.' | interpolate }}
+</p>

@@ -19,6 +19,13 @@ public class Libro {
     //Falta ubicacion.
 
 
+    public Libro(String id, String nombre, String editorial, String autor) {
+        this.id = id;
+        this.nombre = nombre;
+        this.editorial = editorial;
+        this.autor = autor;
+    }
+
     public String getId() {
         return id;
     }
