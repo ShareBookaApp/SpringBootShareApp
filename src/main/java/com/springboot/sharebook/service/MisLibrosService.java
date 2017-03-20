@@ -15,8 +15,8 @@ public class MisLibrosService implements ManejadorMisLibros {
     List<Libro> misLibros = new ArrayList<>();
 
     public MisLibrosService() {
-        misLibros.add(new Libro("1","Cien Años De Soldedad","Norma","Gabriel Garcia Marquez"));
-        misLibros.add(new Libro("2","El Otoño Del Patriarca","Norma","Gabriel Garcia Marquez"));
+       // misLibros.add(new Libro("1","Cien Años De Soldedad","Norma","Gabriel Garcia Marquez"));
+       // misLibros.add(new Libro("2","El Otoño Del Patriarca","Norma","Gabriel Garcia Marquez"));
     }
 
     @Override

@@ -1,13 +1,18 @@
 package com.springboot.sharebook.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.sql.Blob;
 
 /**
  * Created by Diego on 20/03/2017.
  */
+
+@Entity
+@Table(name = "USUARIOS")
 public class Usuario implements Serializable {
 
     private String email;

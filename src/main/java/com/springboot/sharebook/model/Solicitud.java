@@ -2,6 +2,9 @@ package com.springboot.sharebook.model;
 
 import javax.persistence.*;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import static javax.persistence.CascadeType.ALL;
 
 import java.io.Serializable;
@@ -62,8 +65,9 @@ public class Solicitud implements Serializable {
         this.estado = estado;
     }
 
-    @ManyToOne(cascade=ALL)
-    @JoinColumns({@JoinColumn(name="LIBROS_Id1", nullable=false, insertable = false, updatable = false)})
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "LIBROS_Id1", nullable = false)
+    @Fetch(FetchMode.JOIN)
     public Libro getLibro1() {
         return libro1;
     }
@@ -72,8 +76,9 @@ public class Solicitud implements Serializable {
         this.libro1 = libro1;
     }
 
-    @ManyToOne(cascade=ALL)
-    @JoinColumns({@JoinColumn(name="LIBROS_Id2", nullable=false, insertable = false, updatable = false)})
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "LIBROS_Id2", nullable = false)
+    @Fetch(FetchMode.JOIN)
     public Libro getLibro2() {
         return libro2;
     }

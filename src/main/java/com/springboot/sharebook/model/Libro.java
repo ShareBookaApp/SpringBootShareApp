@@ -1,6 +1,9 @@
 package com.springboot.sharebook.model;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import static javax.persistence.CascadeType.ALL;
 
 import javax.persistence.*;
@@ -111,8 +114,9 @@ public class Libro implements Serializable {
         this.longitude = longitude;
     }
 
-    @ManyToOne(cascade = ALL)
-    @JoinColumns({@JoinColumn(name="USUARIOS_email", nullable=false, insertable = false, updatable = false)})
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USUARIOS_email", nullable = false)
+    @Fetch(FetchMode.JOIN)
     public Usuario getUsuario() {
         return usuario;
     }
