@@ -1,20 +1,37 @@
 package com.springboot.sharebook.model;
 
-import java.net.URL;
+import org.hibernate.annotations.Cascade;
+import static javax.persistence.CascadeType.ALL;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.sql.Blob;
+
 
 /**
  * Created by Diego
  */
-public class Libro {
+
+@Entity
+@Table(name = "LIBROS")
+public class Libro implements Serializable {
 
 
     private String id;
+
     private String nombre;
+
     private String editorial;
+
     private String autor;
-    private String imagen;
+
+    private Blob imagen;
+
     private Float latitude;
+
     private Float longitude;
+
+    private Usuario usuario;
 
     //Falta ubicacion.
 
@@ -26,6 +43,7 @@ public class Libro {
         this.autor = autor;
     }
 
+    @Id
     public String getId() {
         return id;
     }
@@ -34,6 +52,7 @@ public class Libro {
         this.id = id;
     }
 
+    @Column(name = "nombre")
     public String getNombre() {
         return nombre;
     }
@@ -42,6 +61,7 @@ public class Libro {
         this.nombre = nombre;
     }
 
+    @Column(name = "editorial")
     public String getEditorial() {
         return editorial;
     }
@@ -50,6 +70,7 @@ public class Libro {
         this.editorial = editorial;
     }
 
+    @Column(name = "autor")
     public String getAutor() {
         return autor;
     }
@@ -58,14 +79,16 @@ public class Libro {
         this.autor = autor;
     }
 
-    public String getImagen() {
+    @Column(name="imagen")
+    public Blob getImagen() {
         return imagen;
     }
 
-    public void setImagen(String imagen) {
+    public void setImagen(Blob imagen) {
         this.imagen = imagen;
     }
 
+    @Column(name="latitude")
     public Float getLatitude() {
         return latitude;
     }
@@ -74,12 +97,23 @@ public class Libro {
         this.latitude = latitude;
     }
 
+    @Column(name="longitude")
     public Float getLongitude() {
         return longitude;
     }
 
     public void setLongitude(Float longitude) {
         this.longitude = longitude;
+    }
+
+    @ManyToOne(cascade = ALL)
+    @JoinColumns({@JoinColumn(name="USUARIOS_email", nullable=false, insertable = false, updatable = false)})
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
 }

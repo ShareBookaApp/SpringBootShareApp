@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2017-03-20 18:06:50.333
+-- Last modification date: 2017-03-20 19:19:58.81
 
 -- tables
 -- Table: LIBROS
@@ -8,7 +8,7 @@ CREATE TABLE LIBROS (
     nombre varchar(100) NOT NULL,
     editorial varchar(100) NOT NULL,
     autor varchar(100) NOT NULL,
-    imagen varchar(100) NOT NULL,
+    imagen blob NOT NULL,
     latitude double(30,30) NOT NULL,
     longitude double(30,30) NOT NULL,
     USUARIOS_email varchar(100) NOT NULL,
@@ -38,19 +38,6 @@ CREATE TABLE USUARIOS (
     imagen varchar(100) NOT NULL,
     CONSTRAINT USUARIOS_pk PRIMARY KEY (email)
 );
-
--- foreign keys
--- Reference: LIBROS_USUARIOS (table: LIBROS)
-ALTER TABLE LIBROS ADD CONSTRAINT LIBROS_USUARIOS FOREIGN KEY LIBROS_USUARIOS (USUARIOS_email)
-    REFERENCES USUARIOS (email);
-
--- Reference: LIBRO_SOLICITUD_LIBROS (table: LIBRO_SOLICITUD)
-ALTER TABLE LIBRO_SOLICITUD ADD CONSTRAINT LIBRO_SOLICITUD_LIBROS FOREIGN KEY LIBRO_SOLICITUD_LIBROS (LIBROS_Id)
-    REFERENCES LIBROS (Id);
-
--- Reference: LIBRO_SOLICITUD_SOLICITUDES (table: LIBRO_SOLICITUD)
-ALTER TABLE LIBRO_SOLICITUD ADD CONSTRAINT LIBRO_SOLICITUD_SOLICITUDES FOREIGN KEY LIBRO_SOLICITUD_SOLICITUDES (SOLICITUDES_Id)
-    REFERENCES SOLICITUDES (Id);
 
 -- End of file.
 
