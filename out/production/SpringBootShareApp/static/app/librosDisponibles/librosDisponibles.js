@@ -12,6 +12,8 @@ angular.module('myApp.librosDisponibles', ['ngRoute', 'ngMaterial'])
 .controller('ControlLibrosDisponibles',  function ($scope, fabricaLibro, $mdDialog) {
 
 
+
+
    $scope.listado= fabricaLibro.getListado();
 
    $scope.showConfirm = function(ev) {

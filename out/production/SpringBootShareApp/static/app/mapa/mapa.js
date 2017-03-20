@@ -1,11 +1,11 @@
 
-angular.module('appMaps', ['uiGmapgoogle-maps'])
- /*   .config(['$routeProvider', function($routeProvider) {
+angular.module('appMaps', ['ngRoute', 'uiGmapgoogle-maps'])
+  .config(['$routeProvider', function($routeProvider) {
       $routeProvider.when('/mapa', {
         templateUrl: 'mapa/mapa.html',
         controller: 'mainCtrl'
       });
-    }])*/
+    }])
 
     .controller('mainCtrl', function($scope, $timeout) {
     var markerId = 0;

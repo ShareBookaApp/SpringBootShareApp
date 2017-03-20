@@ -12,7 +12,7 @@ public class Libro {
     private String nombre;
     private String editorial;
     private String autor;
-    private URL imagen;
+    private String imagen;
     private Float latitude;
     private Float longitude;
 
@@ -58,11 +58,11 @@ public class Libro {
         this.autor = autor;
     }
 
-    public URL getImagen() {
+    public String getImagen() {
         return imagen;
     }
 
-    public void setImagen(URL imagen) {
+    public void setImagen(String imagen) {
         this.imagen = imagen;
     }
 

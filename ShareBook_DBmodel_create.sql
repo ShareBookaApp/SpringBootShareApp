@@ -1,0 +1,56 @@
+-- Created by Vertabelo (http://vertabelo.com)
+-- Last modification date: 2017-03-20 18:06:50.333
+
+-- tables
+-- Table: LIBROS
+CREATE TABLE LIBROS (
+    Id varchar(50) NOT NULL,
+    nombre varchar(100) NOT NULL,
+    editorial varchar(100) NOT NULL,
+    autor varchar(100) NOT NULL,
+    imagen varchar(100) NOT NULL,
+    latitude double(30,30) NOT NULL,
+    longitude double(30,30) NOT NULL,
+    USUARIOS_email varchar(100) NOT NULL,
+    CONSTRAINT LIBROS_pk PRIMARY KEY (Id)
+);
+
+-- Table: LIBRO_SOLICITUD
+CREATE TABLE LIBRO_SOLICITUD (
+    LIBROS_Id varchar(50) NOT NULL,
+    SOLICITUDES_Id varchar(50) NOT NULL
+);
+
+-- Table: SOLICITUDES
+CREATE TABLE SOLICITUDES (
+    Id varchar(50) NOT NULL,
+    fecha date NOT NULL,
+    estado bool NOT NULL,
+    CONSTRAINT SOLICITUDES_pk PRIMARY KEY (Id)
+);
+
+-- Table: USUARIOS
+CREATE TABLE USUARIOS (
+    email varchar(100) NOT NULL,
+    password varchar(100) NOT NULL,
+    nombre varchar(100) NOT NULL,
+    celular varchar(100) NOT NULL,
+    imagen varchar(100) NOT NULL,
+    CONSTRAINT USUARIOS_pk PRIMARY KEY (email)
+);
+
+-- foreign keys
+-- Reference: LIBROS_USUARIOS (table: LIBROS)
+ALTER TABLE LIBROS ADD CONSTRAINT LIBROS_USUARIOS FOREIGN KEY LIBROS_USUARIOS (USUARIOS_email)
+    REFERENCES USUARIOS (email);
+
+-- Reference: LIBRO_SOLICITUD_LIBROS (table: LIBRO_SOLICITUD)
+ALTER TABLE LIBRO_SOLICITUD ADD CONSTRAINT LIBRO_SOLICITUD_LIBROS FOREIGN KEY LIBRO_SOLICITUD_LIBROS (LIBROS_Id)
+    REFERENCES LIBROS (Id);
+
+-- Reference: LIBRO_SOLICITUD_SOLICITUDES (table: LIBRO_SOLICITUD)
+ALTER TABLE LIBRO_SOLICITUD ADD CONSTRAINT LIBRO_SOLICITUD_SOLICITUDES FOREIGN KEY LIBRO_SOLICITUD_SOLICITUDES (SOLICITUDES_Id)
+    REFERENCES SOLICITUDES (Id);
+
+-- End of file.
+
