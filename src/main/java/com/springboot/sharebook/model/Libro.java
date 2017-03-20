@@ -33,14 +33,19 @@ public class Libro implements Serializable {
 
     private Usuario usuario;
 
-    //Falta ubicacion.
-
-
-    public Libro(String id, String nombre, String editorial, String autor) {
+    public Libro(String id, String nombre, String editorial, String autor, Blob imagen, Float latitude, Float longitude, Usuario usuario) {
         this.id = id;
         this.nombre = nombre;
         this.editorial = editorial;
         this.autor = autor;
+        this.imagen = imagen;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.usuario = usuario;
+    }
+
+    public Libro(){
+
     }
 
     @Id
