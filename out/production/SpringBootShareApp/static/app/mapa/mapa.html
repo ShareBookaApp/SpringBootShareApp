@@ -10,19 +10,21 @@
     <script src='/app/bower_components/angular-google-maps/dist/angular-google-maps.js'></script>
     <script src="/app/mapa/mapa.js"></script>
     <style type="text/css">
-        html, body, #map_canvas {
+        html, body {
             height: 100%;
             width: 100%;
             margin: 0px;
         }
 
         #map_canvas {
-            position: relative;
+            position: absolute;
+            height: 100%;
+            width: 70%;
         }
 
         .angular-google-map-container {
             position: absolute;
-            top: 0;
+            top: 10%;
             bottom: 0;
             right: 0;
             left: 0;
@@ -31,6 +33,10 @@
 </head>
 
 <body>
+
+
+
+
 <div id="map_canvas" ng-controller="mainCtrl">
     <ui-gmap-google-map center="map.center"
                         zoom="map.zoom"

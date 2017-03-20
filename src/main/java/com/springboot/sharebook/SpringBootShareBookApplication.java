@@ -2,9 +2,11 @@ package com.springboot.sharebook;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,6 +26,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @SpringBootApplication
+@EnableJpaRepositories("com.springboot.sharebook.repositories")
+@EntityScan("com.springboot.sharebook.model")
 public class SpringBootShareBookApplication {
 
 	public static void main(String[] args) {
@@ -84,4 +88,6 @@ public class SpringBootShareBookApplication {
 		}
 
 	}
+
+
 }
