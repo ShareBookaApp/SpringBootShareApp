@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping(value= "/libros")
+@RequestMapping(value= "/todoslibros")
 public class TodosLosLibrosControlador {
 }

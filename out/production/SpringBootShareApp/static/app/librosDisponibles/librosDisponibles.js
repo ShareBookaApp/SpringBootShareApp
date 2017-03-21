@@ -9,12 +9,12 @@ angular.module('myApp.librosDisponibles', ['ngRoute', 'ngMaterial'])
   });
 }])
 
-.controller('ControlLibrosDisponibles',  function ($scope, fabricaLibro, $mdDialog) {
+.controller('ControlLibrosDisponibles',  function ($scope, LibroFactory, $mdDialog) {
 
 
 
 
-   $scope.listado= fabricaLibro.getListado();
+   $scope.listado= LibroFactory.query();
 
    $scope.showConfirm = function(ev) {
        // Appending dialog to document.body to cover sidenav in docs app
