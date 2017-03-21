@@ -1,6 +1,11 @@
 'use strict';
 angular.module('services.fabricaLibro', ['ngRoute'])
 
+    .factory('LibroFactory', function($resource) {
+            return $resource('/libros');
+
+
+            })
     .factory('fabricaLibro', function () {
         var data = {
              listado: [

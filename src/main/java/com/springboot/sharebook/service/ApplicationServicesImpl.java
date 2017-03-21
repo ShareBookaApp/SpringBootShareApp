@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Diego on 20/03/2017.
@@ -30,5 +31,10 @@ public class ApplicationServicesImpl implements ApplicationServices {
     public ArrayList<Libro> traerMisLibros(String useremail) {
         //Como este deben ser hechos los demas servicios trayendo de los repositorios
         return null;
+    }
+
+    @Override
+    public List<Libro> traerLibrosDisponibles(String useremail) {
+        return librorepo.getLibrosDisponibles(useremail);
     }
 }
