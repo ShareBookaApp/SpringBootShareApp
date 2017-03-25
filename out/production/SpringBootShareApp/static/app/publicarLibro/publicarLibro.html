@@ -1,0 +1,24 @@
+<div ng-controller="loginCtrl">
+  <div ng-show="authenticated">
+    <p>Publica tu libro: </p>
+    <div ng-controller="ControlPublicarLibro">
+      <div class="form-inline">
+        <input class="form-control" type="text" ng-model="id" placeholder='Id Libro' />
+        <input class="form-control" type="text" ng-model="nombre" placeholder='Nombre' />
+        <input class="form-control" type="text" ng-model="editorial" placeholder='Editorial' />
+        <input class="form-control" type="text" ng-model="autor" placeholder='Autor'  />
+        <button class="btn btn-default" ng-click="updateFactoryLibro(id, nombre, editorial, autor)">Publicar Libro</button>
+      </div>
+    </div>
+  </div>
+  <div  ng-show="!authenticated">
+    <p><h1>Error:</h1>Ingrese con una cuenta valida!</p>
+  </div>
+</div>
+
+
+
+
+
+
+

@@ -12,11 +12,10 @@ angular.module('appMaps', ['ngRoute', 'uiGmapgoogle-maps'])
     var libros = [];
     var data = [];
      $scope.listado = [];
-        $scope.listado = LibrosDispoFactory.query({username:localStorage.getItem("usuario")},function (response) {
+        $scope.listado = LibrosDispoFactory.query({username:'admin@sharebook.com'},function (response) {
             angular.forEach(response, function (item) {
                     data.push(item);
             });
-        $scope.listado = [];
             function refresh(marker) {
                 	 $timeout(function(){
                 		$scope.map.control.refresh({latitude: marker.latitude,

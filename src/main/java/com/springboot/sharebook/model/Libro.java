@@ -1,5 +1,6 @@
 package com.springboot.sharebook.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -88,6 +89,7 @@ public class Libro implements Serializable {
     }
 
     @Column(name="imagen")
+    @JsonIgnore
     public Blob getImagen() {
         return imagen;
     }

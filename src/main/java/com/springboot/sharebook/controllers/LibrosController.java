@@ -25,7 +25,7 @@ public class LibrosController {
     @ResponseBody
     public ResponseEntity<List<Libro>> getLibrosDisponibles(@PathVariable String username) {
         try {
-            return ResponseEntity.ok().body(services.traerLibrosDisponibles("admin@sharebook.com"));
+            return ResponseEntity.ok().body(services.traerLibrosDisponibles(username+".com"));
         } catch (Exception ex) {
             Logger.getLogger(LibrosController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

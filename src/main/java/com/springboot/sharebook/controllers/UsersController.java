@@ -29,8 +29,7 @@ public class UsersController {
     ResponseEntity<?> login(Principal user){
 
         try {
-            System.out.println("Entra login");
-            System.out.print("Principal name:"+user.getName());
+
             return ResponseEntity.ok().body(user);
         } catch (Exception ex) {
             Logger.getLogger(LibrosController.class.getName()).log(Level.SEVERE, null, ex);

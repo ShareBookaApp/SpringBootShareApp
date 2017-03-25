@@ -83,6 +83,7 @@ public class Usuario implements Serializable {
         this.celular = celular;
     }
     @Column(name = "imagen")
+    @JsonIgnore
     public Blob getImagen() {
         return imagen;
     }
