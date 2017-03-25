@@ -1,11 +1,17 @@
 package com.springboot.sharebook.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.sql.Blob;
+import java.util.Collection;
+import java.util.Set;
 
 /**
  * Created by Diego on 20/03/2017.
@@ -16,12 +22,19 @@ import java.sql.Blob;
 public class Usuario implements Serializable {
 
     private String email;
+
+    @NotEmpty
+    @JsonIgnore
     private String password;
+    @NotEmpty
     private String nombre;
     private String celular;
     private Blob imagen;
 
-    public Usuario(String email, String password, String nombre, String celular, Blob imagen) {
+    @NotEmpty
+    private Role role;
+
+    public Usuario(String nombre, String password, String email, String celular, Blob imagen) {
         this.email = email;
         this.password = password;
         this.nombre = nombre;
@@ -30,10 +43,13 @@ public class Usuario implements Serializable {
     }
 
     public Usuario(){
-
     }
 
+
+
+
     @Id
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -41,6 +57,7 @@ public class Usuario implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
     @Column(name = "password")
     public String getPassword() {
         return password;
@@ -74,4 +91,13 @@ public class Usuario implements Serializable {
         this.imagen = imagen;
     }
 
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }

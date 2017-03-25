@@ -1,11 +1,9 @@
 package com.springboot.sharebook.service;
 
 import com.springboot.sharebook.model.Libro;
-import com.springboot.sharebook.model.Solicitud;
-import com.springboot.sharebook.model.Usuario;
 import com.springboot.sharebook.repositories.LibroRepository;
 import com.springboot.sharebook.repositories.SolicitudRepository;
-import com.springboot.sharebook.repositories.UsuarioRepository;
+import com.springboot.sharebook.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +20,7 @@ public class ApplicationServicesImpl implements ApplicationServices {
     @Autowired
     private LibroRepository librorepo;
     @Autowired
-    private UsuarioRepository userrepo;
+    private UserRepository userrepo;
 
     @Autowired
     private SolicitudRepository solirepo;
