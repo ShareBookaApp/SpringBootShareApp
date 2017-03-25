@@ -1,15 +1,15 @@
 'use strict';
 
-angular.module('myApp.intercambiar', ['ngRoute', 'ngMaterial'])
+angular.module('myApp.librosDisponibles', ['ngRoute', 'ngMaterial'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/intercambiar', {
-    templateUrl: 'intercambiar/intercambiar.html',
-    controller: 'Ctrlintercambiar'
+  $routeProvider.when('/librosDisponibles', {
+    templateUrl: 'librosDisponibles/librosDisponibles.html',
+    controller: 'ControlLibrosDisponibles'
   });
 }])
-.controller('Ctrlintercambiar',  function ($scope, LibrosDispoFactory, $mdDialog) {
 
+.controller('ControlLibrosDisponibles',  function ($scope, LibrosDispoFactory, $mdDialog) {
 
 
 

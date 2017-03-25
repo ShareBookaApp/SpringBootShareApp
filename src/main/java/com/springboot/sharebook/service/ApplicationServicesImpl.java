@@ -7,6 +7,8 @@ import com.springboot.sharebook.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.InputStream;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,5 +36,10 @@ public class ApplicationServicesImpl implements ApplicationServices {
     @Override
     public List<Libro> traerLibrosDisponibles(String useremail) {
         return librorepo.getLibrosDisponibles(useremail);
+    }
+
+    @Override
+    public InputStream getLibroPicture(String id) throws SQLException {
+        return librorepo.getLibroPicture(id).getBinaryStream();
     }
 }

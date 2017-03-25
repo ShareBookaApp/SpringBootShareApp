@@ -12,8 +12,8 @@ angular.module('myApp.intercambiar', ['ngRoute', 'ngMaterial'])
 
 
 
-
-   $scope.listado= LibrosDispoFactory.query({username:'admin@sharebook.com'});
+    $scope.listado = [];
+   $scope.listado= LibrosDispoFactory.query({username:localStorage.getItem("usuario")});
 
    $scope.showConfirm = function(ev) {
        // Appending dialog to document.body to cover sidenav in docs app
