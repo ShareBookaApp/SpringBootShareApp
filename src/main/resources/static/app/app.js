@@ -22,5 +22,4 @@ angular.module('myApp', [
 ]).
 config(['$locationProvider', '$routeProvider', '$httpProvider', function($locationProvider, $routeProvider, $httpProvider) {
     $locationProvider.hashPrefix('!');
-    localStorage.setItem("usuario", "");
     $routeProvider.otherwise({redirectTo: '/login'});$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'}]);

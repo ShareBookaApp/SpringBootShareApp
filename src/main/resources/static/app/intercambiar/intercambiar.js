@@ -12,7 +12,7 @@ angular.module('myApp.intercambiar', ['ngRoute', 'ngMaterial'])
 
 
 
-
+    $scope.listado = [];
    $scope.listado= LibrosDispoFactory.query({username:localStorage.getItem("usuario")});
 
    $scope.showConfirm = function(ev) {
