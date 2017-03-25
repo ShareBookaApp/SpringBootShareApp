@@ -9,12 +9,11 @@ angular.module('myApp.librosDisponibles', ['ngRoute', 'ngMaterial'])
   });
 }])
 
-.controller('ControlLibrosDisponibles',  function ($scope, LibroFactory, $mdDialog) {
+.controller('ControlLibrosDisponibles',  function ($scope, LibrosDispoFactory, $mdDialog) {
 
 
 
-
-   $scope.listado= LibroFactory.query();
+   $scope.listado= LibrosDispoFactory.query({username:'admin@sharebook.com'});
 
    $scope.showConfirm = function(ev) {
        // Appending dialog to document.body to cover sidenav in docs app

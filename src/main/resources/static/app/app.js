@@ -4,6 +4,7 @@
 angular.module('myApp', [
   'ngRoute',
   'ngMaterial',
+  'ngResource',
   'uiGmapgoogle-maps',
   'appMaps',
   'ngAnimate',
