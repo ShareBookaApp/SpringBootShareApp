@@ -8,12 +8,12 @@ angular.module('myApp.intercambiar', ['ngRoute', 'ngMaterial'])
     controller: 'Ctrlintercambiar'
   });
 }])
-.controller('Ctrlintercambiar',  function ($scope, fabricaLibro, $mdDialog) {
+.controller('Ctrlintercambiar',  function ($scope, LibrosDispoFactory, $mdDialog) {
 
 
 
 
-   $scope.listado= fabricaLibro.getListado();
+   $scope.listado= LibrosDispoFactory.query({username:'admin@sharebook.com'});
 
    $scope.showConfirm = function(ev) {
        // Appending dialog to document.body to cover sidenav in docs app
