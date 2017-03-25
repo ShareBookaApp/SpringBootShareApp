@@ -32,6 +32,7 @@ CREATE TABLE USUARIOS (
     nombre varchar(100) NOT NULL,
     celular varchar(100) NOT NULL,
     imagen blob NULL,
+    role varchar(50) not null,
     CONSTRAINT USUARIOS_pk PRIMARY KEY (email)
 );
 
@@ -50,10 +51,11 @@ ALTER TABLE SOLICITUDES ADD CONSTRAINT SOLICITUDES_LIBROS2 FOREIGN KEY SOLICITUD
 
 -- End of file.
 
-INSERT INTO `USUARIOS` (`email`,`password`,`nombre`, `celular`, `imagen`)
+INSERT INTO `USUARIOS` (`email`,`password`,`nombre`, `celular`, `imagen`, `role`)
 	VALUES
-		('admin@sharebook.com', 'password', 'Administrador Sharebook', '3103101010',LOAD_FILE('http://www.free-icons-download.net/images/administrator-icon-5154.png')), 
-        ('diego@sharebook.com', 'password', 'Diego Mendez', '3103101011',LOAD_FILE('https://scontent.fbog2-1.fna.fbcdn.net/v/t1.0-9/14449927_10209799835408003_5714881594361642354_n.jpg?oh=d140e3aadec6daf82b184b59c79699f4&oe=59593946'));
+		('alejo@sharebook.com', 'password', 'Administrador Sharebook', '3103101010',LOAD_FILE('http://www.free-icons-download.net/images/administrator-icon-5154.png'), 'ROLE_ADMIN'),
+		('admin@sharebook.com', 'password', 'Administrador Sharebook', '3103101010',LOAD_FILE('http://www.free-icons-download.net/images/administrator-icon-5154.png'), 'ROLE_ADMIN'),
+        ('diego@sharebook.com', 'password', 'Diego Mendez', '3103101011',LOAD_FILE('https://scontent.fbog2-1.fna.fbcdn.net/v/t1.0-9/14449927_10209799835408003_5714881594361642354_n.jpg?oh=d140e3aadec6daf82b184b59c79699f4&oe=59593946'), 'ROLE_USER');
         
 INSERT INTO `LIBROS` (`Id`,`nombre`,`editorial`, `autor`, `imagen`, `latitude`, `longitude`, `USUARIOS_email`)
 VALUES
