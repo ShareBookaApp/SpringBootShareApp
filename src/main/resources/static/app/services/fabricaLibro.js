@@ -4,7 +4,11 @@ angular.module('services.fabricaLibro', ['ngRoute','ngResource'])
     .factory('LibrosDispoFactory', function($resource) {
             return $resource('/libros/disponibles/:username');
             })
+    .factory('AddLibroFactory', function($resource) {
+                            return $resource('/libros/:useremail');
+        })
 
+     // De aqui para abajo no deberia existir mas, se quedan como las fabricas de arriba
     .factory('fabricaLibro', function () {
         var data = {
              listado: [       ]

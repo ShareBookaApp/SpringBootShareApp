@@ -9,9 +9,9 @@ CREATE TABLE LIBROS (
     editorial varchar(100) NOT NULL,
     autor varchar(100) NOT NULL,
     imagen blob NULL,
-    latitude double NOT NULL,
-    longitude double NOT NULL,
-    USUARIOS_email varchar(100) NOT NULL,
+    latitude double NULL,
+    longitude double NULL,
+    USUARIOS_email varchar(100) NULL,
     CONSTRAINT LIBROS_pk PRIMARY KEY (Id)
 );
 

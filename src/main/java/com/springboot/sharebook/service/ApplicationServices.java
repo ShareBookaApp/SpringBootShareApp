@@ -17,4 +17,6 @@ public interface ApplicationServices {
     public List<Libro> traerLibrosDisponibles(String useremail);
 
     public InputStream getLibroPicture(String id) throws SQLException;
+
+    public void addLibro(Libro libro, String useremail);
 }

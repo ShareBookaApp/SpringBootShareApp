@@ -43,4 +43,18 @@ public class LibrosController {
         }
     }
 
+    @RequestMapping(path = "/{useremail}", method = RequestMethod.POST)
+    public ResponseEntity<?> addLibro(@RequestBody Libro libro, @PathVariable String useremail){
+        ResponseEntity a;
+        try {
+            services.addLibro(libro, useremail+".com");
+            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
+            System.out.println("Libro creado sin error");
+        } catch (Exception ex) {
+            Logger.getLogger(LibrosController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error!",HttpStatus.NOT_ACCEPTABLE);
+        }
+        return a;
+    }
+
 }
