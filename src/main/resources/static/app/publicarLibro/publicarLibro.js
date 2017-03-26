@@ -9,17 +9,18 @@ angular.module('myApp.publicarLibro', ['ngRoute'])
   });
 }])
 
-.controller('ControlPublicarLibro', ['$scope', 'fabricaLibro', function ($scope, fabricaLibro) {
+.controller('ControlPublicarLibro', ['$scope', 'AddLibroFactory', function ($scope, AddLibroFactory) {
 
 
-    $scope.updateFactoryLibro = function(id, nombre, editorial, autor){
+    $scope.updateFactoryLibro = function(nombre, editorial, autor){
 
     var todo = {
-        'id': id,
         'nombre': nombre,
         'editorial': editorial,
-        'autor': autor
+        'autor': autor,
+        'latitude': 4.783042,
+        'longitude': -74.042682
     };
-        fabricaLibro.addTodo(todo);
+        AddLibroFactory.save({useremail:localStorage.getItem("usuario")},todo);
     }
 }]);

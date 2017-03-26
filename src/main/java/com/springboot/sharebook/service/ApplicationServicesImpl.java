@@ -1,6 +1,7 @@
 package com.springboot.sharebook.service;
 
 import com.springboot.sharebook.model.Libro;
+import com.springboot.sharebook.model.Usuario;
 import com.springboot.sharebook.repositories.LibroRepository;
 import com.springboot.sharebook.repositories.SolicitudRepository;
 import com.springboot.sharebook.repositories.UserRepository;
@@ -41,5 +42,14 @@ public class ApplicationServicesImpl implements ApplicationServices {
     @Override
     public InputStream getLibroPicture(String id) throws SQLException {
         return librorepo.getLibroPicture(id).getBinaryStream();
+    }
+
+    @Override
+    public void addLibro(Libro libro, String useremail) {
+        Usuario u = userrepo.findByEmail(useremail);
+        libro.setUsuario(u);
+        libro.setId(u.getEmail()+libro.getNombre()+libro.getLatitude());
+        System.out.print("Siiiiii   "+libro.getId()+" -------------- ");
+        librorepo.save(libro);
     }
 }
