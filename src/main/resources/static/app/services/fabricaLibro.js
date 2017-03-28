@@ -22,19 +22,9 @@ angular.module('services.fabricaLibro', ['ngRoute','ngResource'])
             }};
     })
 
-    .factory('fabricaMisLibro', function () {
-            var data = {
-                 listado: [
-                                {"id":'1', "nombre":'Cien Años De Soldedad', "editorial":'Norma', "autor":'Paulo Coelho', "latitude":4.782627, "longitude":-74.042634},
-                                {"id":'2', "nombre":'fisica', "editorial":'Norma', "autor":'English', "latitude":4.782603, "longitude":-74.044069}
+    .factory('fabricaMisLibro', function ($resource) {
+        console.log("Entro fabricamislibros")
+        return $resource('/mislibros/:username');
 
-                                ]
-            };
-            return {
-                getListado: function () {
-                    return data.listado;
-                },
-                addTodo: function (todo) {
-                    data.listado.push(todo);
-                }};
+
         });
