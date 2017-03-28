@@ -8,7 +8,10 @@ import com.springboot.sharebook.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.sql.rowset.serial.SerialBlob;
+import java.io.File;
 import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,8 +51,19 @@ public class ApplicationServicesImpl implements ApplicationServices {
     public void addLibro(Libro libro, String useremail) {
         Usuario u = userrepo.findByEmail(useremail);
         libro.setUsuario(u);
-        libro.setId(u.getEmail()+libro.getNombre()+libro.getLatitude());
-        System.out.print("Siiiiii   "+libro.getId()+" -------------- ");
+        String id = u.getEmail()+libro.getNombre()+libro.getLatitude();
+        libro.setId(id.trim());
         librorepo.save(libro);
+    }
+
+    @Override
+    public void addLibroPicture(InputStream imagen, String idLibro) {
+        Libro l = librorepo.findOne(idLibro);
+       // l.setImagen();
+}
+
+    @Override
+    public Libro getLibroById(String idLibro) {
+        return librorepo.findOne(idLibro);
     }
 }
