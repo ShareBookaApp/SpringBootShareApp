@@ -30,7 +30,8 @@ public class MisLibrosController {
     @ResponseBody
     public ResponseEntity<List<Libro>> getMisLibrosDisponibles(@PathVariable String username) {
         try {
-            System.out.println("uSUARIO" + username);
+
+            //System.out.println("uSUARIO" + username);
             return ResponseEntity.ok().body(services.traerMisLibros(username+".com"));
         } catch (Exception ex) {
             Logger.getLogger(LibrosController.class.getName()).log(Level.SEVERE, null, ex);
