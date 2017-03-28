@@ -6,27 +6,20 @@ angular.module('myApp.intercambiar', ['ngRoute', 'ngMaterial'])
   $routeProvider.when('/intercambiar', {
     templateUrl: 'intercambiar/intercambiar.html',
     controller: 'Ctrlintercambiar'
-
   });
 }])
-.controller('Ctrlintercambiar',  function ($scope, LibrosDispoFactory,fabricaMisLibro, $mdDialog) {
+.controller('Ctrlintercambiar',  function ($scope, LibrosDispoFactory, $mdDialog) {
 
 
 
     $scope.listado = [];
-     $scope.selected = [];
-    $scope.misli=[];
    $scope.listado= LibrosDispoFactory.query({username:localStorage.getItem("usuario")});
-  $scope.misli= fabricaMisLibro.query({username:localStorage.getItem("usuario")});;
-//  $scope.selected = $scope.misli[0];
-  $scope.selected.Id = "1";
-   $scope.showConfirm = function(ev,sel) {
-   console.log("Selcted"+sel.nombre);
+
+   $scope.showConfirm = function(ev) {
        // Appending dialog to document.body to cover sidenav in docs app
        var confirm = $mdDialog.confirm()
-             .title('¿Quieres solicitar el libro : ' + ev.nombre + "\n ?, a cambio de su libro :")
-
-             .textContent(sel.nombre +'\n,de la Editorial: '+sel.editorial + '\n Autor: ' + sel.autor  )
+             .title('¿Quieres solicitar este libro?')
+             .textContent('Nombre: '+ev.nombre +'\n  Editorial: '+ev.editorial + '\n   Autor: ' + ev.autor)
              .targetEvent(ev)
              .ok('Solicitar!')
              .cancel('Volver');

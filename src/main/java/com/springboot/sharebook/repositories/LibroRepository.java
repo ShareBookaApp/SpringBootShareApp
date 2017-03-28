@@ -15,9 +15,6 @@ public interface LibroRepository extends JpaRepository<Libro,String>{
     @Query("from Libro as l where l.usuario.email != ?1")
     List<Libro> getLibrosDisponibles(String useremail);
 
-    @Query("from Libro as l where l.usuario.email = ?1")
-    List<Libro> getMisLibrosDisponibles(String useremail);
-
     @Query("select imagen from Libro as l where l.id = ?1")
     Blob getLibroPicture(String id);
 }
