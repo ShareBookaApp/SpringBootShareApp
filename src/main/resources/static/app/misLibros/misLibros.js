@@ -10,6 +10,6 @@ angular.module('myApp.misLibros', ['ngRoute'])
 }])
 
 .controller('misLibrosCtrl', ['$scope','fabricaMisLibro',function($scope,fabricaMisLibro) {
-     $scope.listado= fabricaMisLibro.getListado();
+     $scope.listado= fabricaMisLibro.query({username:localStorage.getItem("usuario")});
 
 }]  );

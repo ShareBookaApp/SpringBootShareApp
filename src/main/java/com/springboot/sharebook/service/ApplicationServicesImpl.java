@@ -31,7 +31,7 @@ public class ApplicationServicesImpl implements ApplicationServices {
     @Override
     public ArrayList<Libro> traerMisLibros(String useremail) {
         //Como este deben ser hechos los demas servicios trayendo de los repositorios
-        return null;
+        return (ArrayList<Libro>) librorepo.getMisLibrosDisponibles(useremail);
     }
 
     @Override
