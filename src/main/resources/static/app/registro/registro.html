@@ -1,4 +1,5 @@
- <form role="form" ng-submit="registro()">
+<div ng-controller="registroCtrl">
+<form role="form">
         <div class="form-group">
             <label for="name">NameComplete:</label> <input type="text"
                                                            class="form-control" id="name" name="namecom" ng-model="credentials.namecom"/>
@@ -15,9 +16,9 @@
              <label for="confirmPassword">Confirm Password:</label> <input type="password"
                                                             class="form-control" id="confirmPassword" name="confirmpassword" ng-model="credentials.confirmpassword"/>
          </div>
-        <button class="btn bnt-default" ng-click="updateFactory(credentials.namecom, credentials.email, credentials.password)">AgregarUsuario</button>
+        <button class="btn bnt-default" ng-click="registrarUsuario(credentials.namecom, credentials.email, credentials.password)">AgregarUsuario</button>
  </form>
- <div ng-controller="registroCtrl">
+
      <table class="table table-striped table-hover">
      <tbody>
      <tr ng-repeat="todo in usuarios">

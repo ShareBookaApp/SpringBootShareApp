@@ -1,6 +1,7 @@
 package com.springboot.sharebook.service;
 
 import com.springboot.sharebook.model.Libro;
+import com.springboot.sharebook.model.Usuario;
 
 import java.io.InputStream;
 import java.sql.SQLException;
@@ -19,4 +20,6 @@ public interface ApplicationServices {
     public InputStream getLibroPicture(String id) throws SQLException;
 
     public void addLibro(Libro libro, String useremail);
+
+    public void insertUsuario(Usuario user);
 }

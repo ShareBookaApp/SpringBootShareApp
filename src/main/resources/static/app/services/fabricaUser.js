@@ -1,5 +1,8 @@
 'use strict';
-angular.module('services.fabricaUser', ['ngRoute'])
+angular.module('services.fabricaUser', ['ngRoute', 'ngResource'])
+    .factory('RegistroFac', function($resource) {
+                                     return $resource('/registrar/agregar/:email');
+                 })
 
     .factory('fabricaUser', function () {
         var data = {
@@ -16,4 +19,6 @@ angular.module('services.fabricaUser', ['ngRoute'])
             addTodo: function (todo) {
                 data.usuarios.push(todo);
             }};
+
+
     });

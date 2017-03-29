@@ -52,4 +52,9 @@ public class ApplicationServicesImpl implements ApplicationServices {
         System.out.print("Siiiiii   "+libro.getId()+" -------------- ");
         librorepo.save(libro);
     }
+
+    @Override
+    public void insertUsuario(Usuario user){
+        userrepo.save(user);
+    }
 }
