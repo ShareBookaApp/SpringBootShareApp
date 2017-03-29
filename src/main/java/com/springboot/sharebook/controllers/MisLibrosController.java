@@ -1,12 +1,17 @@
 package com.springboot.sharebook.controllers;
 
+import com.springboot.sharebook.model.Libro;
 import com.springboot.sharebook.model.ManejadorMisLibros;
+import com.springboot.sharebook.service.ApplicationServices;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by santiago on 20/02/17.
@@ -16,19 +21,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value= "/mislibros")
 public class MisLibrosController {
 
+
     @Autowired
-    private ManejadorMisLibros ml;
+    ApplicationServices services;
 
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<?> manejadorGetMisLibros() {
+    @RequestMapping(path = "/{username}",method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<List<Libro>> getMisLibrosDisponibles(@PathVariable String username) {
         try {
-
-            return new ResponseEntity<>(manejadorGetMisLibros(), HttpStatus.ACCEPTED);
+            System.out.println("uSUARIO" + username);
+            return ResponseEntity.ok().body(services.traerMisLibros(username+".com"));
         } catch (Exception ex) {
-
-
-            return new ResponseEntity<>("Error bla bla bla", HttpStatus.NOT_FOUND);
+            Logger.getLogger(LibrosController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

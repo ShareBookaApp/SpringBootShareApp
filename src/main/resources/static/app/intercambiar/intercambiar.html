@@ -35,7 +35,14 @@
 <body>
 <div ng-controller="loginCtrl">
     <div ng-show="authenticated">
-        <p>Estos son los libros disponibles para Intercambiar:</p>
+        <div>
+            <h2>Por favor seleccione el libro que desea ofrecer :</h2>
+            <select class="btn btn-default dropdown-toggle btn-select2 center" ng-options="item as item.nombre for item in misli" ng-model="selected.Id" def></select>
+
+
+        </div>
+        <h2>Estos son los libros disponibles para Intercambiar:</h2>
+
         <p>
         <table class="table table-striped table-hover">
             <tbody>
@@ -44,7 +51,7 @@
                 <td>{{todo.nombre}}</td>
                 <td>{{todo.editorial}}</td>
                 <td>{{todo.autor}}</td>
-                <td><button class="btn btn-default" ng-click="showConfirm(todo)">Intercambiar Libro</button></td>
+                <td><button class="btn btn-default" ng-click="showConfirm(todo,selected)">Intercambiar Libro</button></td>
             </tr>
             </tbody>
         </table>
@@ -68,7 +75,15 @@
                         draggable="true"
                         options="map.options"
                         control="map.control">
-        <ui-gmap-markers models="map.markers" coords="'self'" options="'options'" isLabel="true"></ui-gmap-markers>
+        <ui-gmap-markers models="map.markers" coords="'self'" options="'options'" isLabel="true" events="map.markersEvents"></ui-gmap-markers>
+        <ui-gmap-window
+                show="map.window.show"
+                coords="map.window.model"
+                templateUrl="'/app/mapa/infowindow.tpl'"
+                templateParameter="libroMarcador"
+                options="map.window.options"
+                ng-cloak>
+        </ui-gmap-window>
     </ui-gmap-google-map>
 </div>
 
