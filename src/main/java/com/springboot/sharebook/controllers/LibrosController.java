@@ -69,6 +69,20 @@ public class LibrosController {
         return a;
     }
 
+    @RequestMapping(path = "/buscar/{bookname}", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<List<Libro>> getBuscarLibros(@PathVariable String bookname) {
+        try {
+            
+            System.out.println("ENTRO al api rest buscar : "+bookname);
+            return ResponseEntity.ok().body(services.traerLibrosDisponibles(bookname));
+            //return ResponseEntity.ok().body(services.traerLibrosDisponibles(bookname));
+        } catch (Exception ex) {
+            Logger.getLogger(LibrosController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
     @RequestMapping(path = "/{idlibro}/picture", method = RequestMethod.POST)
     public ResponseEntity<?> addLibroPicture(@RequestBody File file, @PathVariable String idlibro){
         ResponseEntity a;
@@ -82,4 +96,5 @@ public class LibrosController {
         }
         return a;
     }
+
 }
