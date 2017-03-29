@@ -9,17 +9,21 @@ angular.module('myApp.publicarLibro', ['ngRoute'])
   });
 }])
 
-.controller('ControlPublicarLibro', ['$scope', 'fabricaLibro', function ($scope, fabricaLibro) {
+.controller('ControlPublicarLibro', ['$scope', '$location', 'AddLibroFactory', 'AddLibroPictureFactory',  function ($scope,$location, AddLibroFactory, AddLibroPictureFactory) {
 
 
-    $scope.updateFactoryLibro = function(id, nombre, editorial, autor){
+    $scope.updateFactoryLibro = function(nombre, editorial, autor){
 
     var todo = {
-        'id': id,
+        'Id': ''+localStorage.getItem("usuario")+nombre+4.783042,
         'nombre': nombre,
         'editorial': editorial,
-        'autor': autor
+        'autor': autor,
+        'latitude': 4.783042,
+        'longitude': -74.042682
     };
-        fabricaLibro.addTodo(todo);
+    AddLibroFactory.save({useremail:localStorage.getItem("usuario")},todo);
+      //  AddLibroPictureFactory.save({idlibro:todo.Id}, localStorage.getItem("imagen"));
+    $location.path("/misLibros");
     }
 }]);
