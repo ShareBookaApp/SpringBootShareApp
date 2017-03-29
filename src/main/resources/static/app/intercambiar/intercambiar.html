@@ -75,7 +75,15 @@
                         draggable="true"
                         options="map.options"
                         control="map.control">
-        <ui-gmap-markers models="map.markers" coords="'self'" options="'options'" isLabel="true"></ui-gmap-markers>
+        <ui-gmap-markers models="map.markers" coords="'self'" options="'options'" isLabel="true" events="map.markersEvents"></ui-gmap-markers>
+        <ui-gmap-window
+                show="map.window.show"
+                coords="map.window.model"
+                templateUrl="'/app/mapa/infowindow.tpl'"
+                templateParameter="libroMarcador"
+                options="map.window.options"
+                ng-cloak>
+        </ui-gmap-window>
     </ui-gmap-google-map>
 </div>
 

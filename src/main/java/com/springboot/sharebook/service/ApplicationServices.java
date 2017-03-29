@@ -19,4 +19,8 @@ public interface ApplicationServices {
     public InputStream getLibroPicture(String id) throws SQLException;
 
     public void addLibro(Libro libro, String useremail);
+
+    public void addLibroPicture(InputStream imagen, String idLibro);
+
+    public Libro getLibroById(String idLibro);
 }

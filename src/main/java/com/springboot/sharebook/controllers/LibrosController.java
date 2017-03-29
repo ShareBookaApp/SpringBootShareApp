@@ -9,6 +9,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,6 +34,15 @@ public class LibrosController {
         } catch (Exception ex) {
             Logger.getLogger(LibrosController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Libro> getLibroById(@PathVariable String id) throws Exception {
+        try {
+            return ResponseEntity.ok().body(services.getLibroById(id));
+        }catch(Exception ex){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
@@ -61,14 +73,7 @@ public class LibrosController {
     @ResponseBody
     public ResponseEntity<List<Libro>> getBuscarLibros(@PathVariable String bookname) {
         try {
-            System.out.println("------------------------------------------------------------------");
-
-            System.out.println("------------------------------------------------------------------");
-            System.out.println("------------------------------------------------------------------");
-            System.out.println("------------------------------------------------------------------");
-            System.out.println("------------------------------------------------------------------");
-            System.out.println("------------------------------------------------------------------");
-            System.out.println("------------------------------------------------------------------");
+            
             System.out.println("ENTRO al api rest buscar : "+bookname);
             return ResponseEntity.ok().body(services.traerLibrosDisponibles(bookname));
             //return ResponseEntity.ok().body(services.traerLibrosDisponibles(bookname));
@@ -76,6 +81,20 @@ public class LibrosController {
             Logger.getLogger(LibrosController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @RequestMapping(path = "/{idlibro}/picture", method = RequestMethod.POST)
+    public ResponseEntity<?> addLibroPicture(@RequestBody File file, @PathVariable String idlibro){
+        ResponseEntity a;
+        try {
+
+            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
+            System.out.println("imagen creado sin error   "+file);
+        } catch (Exception ex) {
+            Logger.getLogger(LibrosController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error!",HttpStatus.NOT_ACCEPTABLE);
+        }
+        return a;
     }
 
 }
