@@ -10,6 +10,7 @@ angular.module('services.fabricaLibro', ['ngRoute','ngResource'])
 
     .factory('fabricaBuscarLibro', function($resource) {
                  return $resource('/libros/buscar/:bookname');
+                 //return $resource('/libros/buscar');
                  })
 
     .factory('AddLibroPictureFactory', function($resource) {

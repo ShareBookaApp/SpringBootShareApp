@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -73,15 +74,22 @@ public class LibrosController {
     @ResponseBody
     public ResponseEntity<List<Libro>> getBuscarLibros(@PathVariable String bookname) {
         try {
-            
+
+
+            System.out.println("----------------------------------------------");
             System.out.println("ENTRO al api rest buscar : "+bookname);
-            return ResponseEntity.ok().body(services.traerLibrosDisponibles(bookname));
+            List<Libro> l = new LinkedList<>();
+            l = services.buscarLibros(bookname);
+            System.out.println("Cantidad de libros: "+l.size());
+            return ResponseEntity.ok().body(l);
             //return ResponseEntity.ok().body(services.traerLibrosDisponibles(bookname));
         } catch (Exception ex) {
             Logger.getLogger(LibrosController.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
 
     @RequestMapping(path = "/{idlibro}/picture", method = RequestMethod.POST)
     public ResponseEntity<?> addLibroPicture(@RequestBody File file, @PathVariable String idlibro){

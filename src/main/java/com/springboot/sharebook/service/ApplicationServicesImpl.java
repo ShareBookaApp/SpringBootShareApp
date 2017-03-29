@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -65,5 +66,14 @@ public class ApplicationServicesImpl implements ApplicationServices {
     @Override
     public Libro getLibroById(String idLibro) {
         return librorepo.findOne(idLibro);
+    }
+
+    @Override
+    public List<Libro> buscarLibros(String bookname) {
+        List<Libro> l = new LinkedList<>();
+        l = librorepo.getBuscarLibro(bookname);
+        System.out.println("Buscar Libros "+ l.size());
+
+        return  l;
     }
 }
