@@ -72,8 +72,10 @@ public class ApplicationServicesImpl implements ApplicationServices {
     @Override
     public List<List<Libro>> getSolicitudesUsuario(String useremail) {
         List<List<Libro>> listaLibros = new LinkedList<>();
-        List<Solicitud> solicitudes = solirepo.getSoliitudesUsuario(useremail);
+        List<Solicitud> solicitudes = solirepo.getPeticionesUsuario(useremail);
+        System.out.print("Hice la consulta  ");
         for(int i=0; i<solicitudes.size(); i++){
+            System.out.print("Si encontre  "+ solicitudes.get(i).getLibro1().getId());
             List<Libro> listSoli = new LinkedList<>();
             listSoli.add(librorepo.findOne(solicitudes.get(i).getLibro1().getId()));
             listSoli.add(librorepo.findOne(solicitudes.get(i).getLibro2().getId()));
