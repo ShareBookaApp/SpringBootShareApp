@@ -1,6 +1,7 @@
 package com.springboot.sharebook.service;
 
 import com.springboot.sharebook.model.Libro;
+import com.springboot.sharebook.model.Solicitud;
 import com.springboot.sharebook.model.Usuario;
 import com.springboot.sharebook.repositories.LibroRepository;
 import com.springboot.sharebook.repositories.SolicitudRepository;
@@ -12,7 +13,10 @@ import javax.sql.rowset.serial.SerialBlob;
 import java.io.File;
 import java.io.InputStream;
 import java.sql.Blob;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,5 +69,17 @@ public class ApplicationServicesImpl implements ApplicationServices {
     @Override
     public Libro getLibroById(String idLibro) {
         return librorepo.findOne(idLibro);
+    }
+
+    @Override
+    public void addSolicitud(Solicitud s,String id1,String id2) throws ParseException {
+        s.setId(id1+id2);
+        s.setEstado(false);
+        s.setLibro1(librorepo.findOne(id1));
+        s.setLibro2(librorepo.findOne(id2));
+        s.setFecha(new Date(0));
+       // Solicitud sd = new Solicitud("2",new Date(0),false,l1,l2);
+        solirepo.save(s);
+
     }
 }

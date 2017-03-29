@@ -9,7 +9,7 @@ angular.module('myApp.intercambiar', ['ngRoute', 'ngMaterial'])
 
   });
 }])
-.controller('Ctrlintercambiar',  function ($scope, LibrosDispoFactory,fabricaMisLibro, $mdDialog) {
+.controller('Ctrlintercambiar',  function ($scope, LibrosDispoFactory,AddSolicitudFactory,fabricaMisLibro, $mdDialog) {
 
 
 
@@ -18,8 +18,9 @@ angular.module('myApp.intercambiar', ['ngRoute', 'ngMaterial'])
     $scope.misli=[];
    $scope.listado= LibrosDispoFactory.query({username:localStorage.getItem("usuario")});
   $scope.misli= fabricaMisLibro.query({username:localStorage.getItem("usuario")});;
-//  $scope.selected = $scope.misli[0];
-  $scope.selected.Id = "1";
+
+ //$scope.selected = $scope.misli[0];
+  //$scope.selected.Id = "1";
    $scope.showConfirm = function(ev,sel) {
    console.log("Selcted"+sel.nombre);
        // Appending dialog to document.body to cover sidenav in docs app
@@ -33,6 +34,10 @@ angular.module('myApp.intercambiar', ['ngRoute', 'ngMaterial'])
 
        $mdDialog.show(confirm).then(function() {
          $scope.status = 'Usted ha solicitado el libro: '+ev.nombre + ' de '+ ev.autor + '.';
+         var todo = {
+
+             };
+        AddSolicitudFactory.save({id1:ev.id,id2:sel.id},todo);
        }, function() {
          $scope.status = '';
        });

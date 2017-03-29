@@ -1,9 +1,11 @@
 package com.springboot.sharebook.service;
 
 import com.springboot.sharebook.model.Libro;
+import com.springboot.sharebook.model.Solicitud;
 
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,4 +25,5 @@ public interface ApplicationServices {
     public void addLibroPicture(InputStream imagen, String idLibro);
 
     public Libro getLibroById(String idLibro);
+    public void addSolicitud(Solicitud s, String id1,String id2) throws ParseException;
 }

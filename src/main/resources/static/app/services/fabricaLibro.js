@@ -7,6 +7,9 @@ angular.module('services.fabricaLibro', ['ngRoute','ngResource'])
     .factory('AddLibroFactory', function($resource) {
                             return $resource('/libros/:useremail');
         })
+   .factory('AddSolicitudFactory', function($resource) {
+                                    return $resource('/solicitud/:id1/:id2');
+                })
 
     .factory('fabricaBuscarLibro', function($resource) {
                  return $resource('/libros/buscar/:bookname');
