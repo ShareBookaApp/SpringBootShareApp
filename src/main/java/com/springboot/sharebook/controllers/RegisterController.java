@@ -15,8 +15,8 @@ import java.util.logging.Logger;
 @RestController
 @RequestMapping(value= "/registro")
 public class RegisterController {
-    @RequestMapping(path = "/{}", method = RequestMethod.POST)
+ /*   @RequestMapping(path = "/{}", method = RequestMethod.POST)
     public ResponseEntity<?> addUsuarios(@RequestBody , @PathVariable String ){
 
-    }
+    }*/
 }
