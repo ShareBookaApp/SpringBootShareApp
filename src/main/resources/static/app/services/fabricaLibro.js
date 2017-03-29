@@ -7,9 +7,11 @@ angular.module('services.fabricaLibro', ['ngRoute','ngResource'])
     .factory('AddLibroFactory', function($resource) {
                             return $resource('/libros/:useremail');
         })
+
    .factory('AddSolicitudFactory', function($resource) {
                                     return $resource('/solicitud/:id1/:id2');
                 })
+
 
     .factory('fabricaBuscarLibro', function($resource) {
                  return $resource('/libros/buscar/:bookname');
@@ -21,6 +23,12 @@ angular.module('services.fabricaLibro', ['ngRoute','ngResource'])
     .factory('LibroById', function($resource) {
                                     return $resource('/libros/:idlibro');
      })
+
+
+     .factory('ListSolicitudesFactory', function($resource) {
+                                         return $resource('/solicitudes/:useremail/usuario');
+          })
+
 
      // De aqui para abajo no deberia existir mas, se quedan como las fabricas de arriba
     .factory('fabricaLibro', function () {

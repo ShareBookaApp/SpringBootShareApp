@@ -25,5 +25,9 @@ public interface ApplicationServices {
     public void addLibroPicture(InputStream imagen, String idLibro);
 
     public Libro getLibroById(String idLibro);
+
+    public List<List<Libro>> getSolicitudesUsuario(String useremail);
+
     public void addSolicitud(Solicitud s, String id1,String id2) throws ParseException;
+
 }

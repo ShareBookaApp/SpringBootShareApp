@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -72,6 +73,19 @@ public class ApplicationServicesImpl implements ApplicationServices {
     }
 
     @Override
+    public List<List<Libro>> getSolicitudesUsuario(String useremail) {
+        List<List<Libro>> listaLibros = new LinkedList<>();
+        List<Solicitud> solicitudes = solirepo.getPeticionesUsuario(useremail);
+        System.out.print("Hice la consulta  ");
+        for(int i=0; i<solicitudes.size(); i++){
+            System.out.print("Si encontre  "+ solicitudes.get(i).getLibro1().getId());
+            List<Libro> listSoli = new LinkedList<>();
+            listSoli.add(librorepo.findOne(solicitudes.get(i).getLibro1().getId()));
+            listSoli.add(librorepo.findOne(solicitudes.get(i).getLibro2().getId()));
+            listaLibros.add(listSoli);
+        }
+        return listaLibros;
+    }
     public void addSolicitud(Solicitud s,String id1,String id2) throws ParseException {
         s.setId(id1+id2);
         s.setEstado(false);
