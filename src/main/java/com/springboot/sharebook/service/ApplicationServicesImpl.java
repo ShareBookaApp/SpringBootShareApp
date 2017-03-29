@@ -1,6 +1,7 @@
 package com.springboot.sharebook.service;
 
 import com.springboot.sharebook.model.Libro;
+import com.springboot.sharebook.model.Solicitud;
 import com.springboot.sharebook.model.Usuario;
 import com.springboot.sharebook.repositories.LibroRepository;
 import com.springboot.sharebook.repositories.SolicitudRepository;
@@ -14,6 +15,7 @@ import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -65,5 +67,18 @@ public class ApplicationServicesImpl implements ApplicationServices {
     @Override
     public Libro getLibroById(String idLibro) {
         return librorepo.findOne(idLibro);
+    }
+
+    @Override
+    public List<List<Libro>> getSolicitudesUsuario(String useremail) {
+        List<List<Libro>> listaLibros = new LinkedList<>();
+        List<Solicitud> solicitudes = solirepo.getSoliitudesUsuario(useremail);
+        for(int i=0; i<solicitudes.size(); i++){
+            List<Libro> listSoli = new LinkedList<>();
+            listSoli.add(librorepo.findOne(solicitudes.get(i).getLibro1().getId()));
+            listSoli.add(librorepo.findOne(solicitudes.get(i).getLibro2().getId()));
+            listaLibros.add(listSoli);
+        }
+        return listaLibros;
     }
 }

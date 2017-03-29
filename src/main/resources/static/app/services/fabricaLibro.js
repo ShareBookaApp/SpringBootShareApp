@@ -13,6 +13,9 @@ angular.module('services.fabricaLibro', ['ngRoute','ngResource'])
     .factory('LibroById', function($resource) {
                                     return $resource('/libros/:idlibro');
      })
+     .factory('ListSolicitudesFactory', function($resource) {
+                                         return $resource('/solicitudes/:useremail/usuario');
+          })
      // De aqui para abajo no deberia existir mas, se quedan como las fabricas de arriba
     .factory('fabricaLibro', function () {
         var data = {
