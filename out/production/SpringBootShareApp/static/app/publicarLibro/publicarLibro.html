@@ -3,11 +3,24 @@
     <p>Publica tu libro: </p>
     <div ng-controller="ControlPublicarLibro">
       <div class="form-inline">
-        <input class="form-control" type="text" ng-model="id" placeholder='Id Libro' />
         <input class="form-control" type="text" ng-model="nombre" placeholder='Nombre' />
         <input class="form-control" type="text" ng-model="editorial" placeholder='Editorial' />
         <input class="form-control" type="text" ng-model="autor" placeholder='Autor'  />
-        <button class="btn btn-default" ng-click="updateFactoryLibro(id, nombre, editorial, autor)">Publicar Libro</button>
+        <p id="errorImagen"></p>
+        <div ng-app="fileUpload" class="container">
+          <div class="row" ng-controller="upload">
+            <div class="col-md-6">
+              <input type="file" fileinput="file" filepreview="filepreview"/>
+            </div>
+            <div class="col-md-6">
+              <img ng-src="{{filepreview}}" width="60" height="80" ng-show="filepreview"/>
+            </div>
+          </div>
+        </div>
+        <p></p>
+        <p></p>
+        <p></p>
+        <button class="btn btn-default" ng-click="updateFactoryLibro(nombre, editorial, autor)">Publicar Libro</button>
       </div>
     </div>
   </div>
