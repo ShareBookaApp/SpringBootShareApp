@@ -18,6 +18,7 @@ angular.module('myApp.login', ['ngRoute'])
                 console.log(data);
                         if (data.data.name) {
                             $rootScope.authenticated = true;
+
                         } else {
                             $rootScope.authenticated = false;
                         }
@@ -32,12 +33,12 @@ angular.module('myApp.login', ['ngRoute'])
     authenticate();
     $scope.credentials = {};
     $scope.login = function () {
-        console.log($rootScope.authenticated)
         authenticate($scope.credentials, function () {
             if ($rootScope.authenticated) {
                  localStorage.setItem("usuario", $scope.credentials.username);
                 $location.path("/intercambiar");
                 $scope.error = false;
+
             } else {
                 $location.path("/login");
                 $scope.error = true;
