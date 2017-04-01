@@ -12,9 +12,12 @@ import java.util.List;
  */
 public interface SolicitudRepository extends JpaRepository<Solicitud, String>{
 
-    @Query("from Solicitud as s inner join s.libro2 as l where l.usuario.email = ?1")
-    List<Solicitud> getSoliitudesUsuario(String useremail);
+    @Query("from Solicitud as s  where s.libro2.usuario.email = ?1")
+    List<Solicitud> getSolicitudesUsuario(String useremail);
 
-    @Query("from Solicitud as s inner join s.libro1 as l where l.usuario.email = ?1")
+    @Query("from Solicitud as s  where s.libro1.usuario.email = ?1")
     List<Solicitud> getPeticionesUsuario(String useremail);
+
+    @Query("select libro1 from Solicitud as s where s.id = ?1")
+    Libro getLibro1(String idsolicitud);
 }

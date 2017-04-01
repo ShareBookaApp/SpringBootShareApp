@@ -9,6 +9,7 @@ angular.module('myApp', [
   'appMaps',
   'ngAnimate',
   'ui.bootstrap',
+  'fileUpload',
   'myApp.login',
   'myApp.registro',
   'myApp.publicarLibro',

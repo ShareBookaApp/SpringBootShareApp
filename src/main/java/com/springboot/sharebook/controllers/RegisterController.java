@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Created by 2087052 on 3/28/17.
+ * Created by Manuel F. on 3/28/17.
  */
 @RestController
 @RequestMapping(value= "/registro")

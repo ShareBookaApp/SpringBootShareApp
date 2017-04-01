@@ -7,7 +7,7 @@ angular.module('appMaps', ['ngRoute', 'uiGmapgoogle-maps'])
       });
     }])
 
-    .controller('mainCtrl', function($scope, $timeout, LibrosDispoFactory, LibroById) {
+    .controller('mainCtrl', function($scope, $timeout, LibrosDispoFactory, LibroById,$mdDialog) {
     var markerId = 0;
     var libros = [];
     var data = [];
