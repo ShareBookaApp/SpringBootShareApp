@@ -17,7 +17,7 @@ angular.module('myApp.intercambiar', ['ngRoute', 'ngMaterial'])
      $scope.selected = [];
     $scope.misli=[];
    $scope.listado= LibrosDispoFactory.query({username:localStorage.getItem("usuario")});
-  $scope.misli= fabricaMisLibro.query({username:localStorage.getItem("usuario")});;
+    $scope.misli= fabricaMisLibro.query({username:localStorage.getItem("usuario")});;
 
  //$scope.selected = $scope.misli[0];
   //$scope.selected.Id = "1";

@@ -26,9 +26,14 @@ angular.module('services.fabricaLibro', ['ngRoute','ngResource'])
 
 
      .factory('ListSolicitudesFactory', function($resource) {
-                                         return $resource('/solicitudes/:useremail/usuario');
+                                         return $resource('/solicitud/usuario/:username');
           })
+    .factory('fabricaMisLibro', function ($resource) {
 
+            return $resource('/mislibros/:username');
+
+
+            })
 
      // De aqui para abajo no deberia existir mas, se quedan como las fabricas de arriba
     .factory('fabricaLibro', function () {
@@ -42,11 +47,5 @@ angular.module('services.fabricaLibro', ['ngRoute','ngResource'])
             addTodo: function (todo) {
                 data.listado.push(todo);
             }};
-    })
+    });
 
-    .factory('fabricaMisLibro', function ($resource) {
-        console.log("Entro fabricamislibros")
-        return $resource('/mislibros/:username');
-
-
-        });
