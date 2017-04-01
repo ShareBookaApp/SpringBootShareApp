@@ -24,12 +24,12 @@ public class SolicitudController {
     @Autowired
     ApplicationServices services;
 
-    @RequestMapping(path = "/{username}/usuario", method = RequestMethod.GET)
+    @RequestMapping(path = "/usuario/{username}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<List<Libro>>> getSoliUser(@PathVariable String username) {
         try {
             System.out.print("Siiii  "+username+ "  lllllll");
-            return ResponseEntity.ok().body(services.getSolicitudesUsuario(username));
+            return ResponseEntity.ok().body(services.getSolicitudesUsuario(username+".com"));
         } catch (Exception ex) {
             System.out.print("Noooooo  "+username+ "  lllllll");
             Logger.getLogger(SolicitudController.class.getName()).log(Level.SEVERE, null, ex);
