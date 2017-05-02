@@ -6,6 +6,10 @@ deployment:
     branch: master
     heroku:
       appname: sharebook
+	  
+dependencies:
+  override:
+     - chmod +x gradlew
 test:
   override:
     - ./gradlew test -is
