@@ -12,7 +12,7 @@ angular.module('myApp.librosDisponibles', ['ngRoute', 'ngMaterial'])
 .controller('ControlLibrosDisponibles',  function ($scope, LibrosDispoFactory, $mdDialog) {
 
 
-
+    $scope.listado = [];
    $scope.listado= LibrosDispoFactory.query({username:localStorage.getItem("usuario")});
 
    $scope.showConfirm = function(ev) {

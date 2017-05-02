@@ -19,7 +19,7 @@ apply plugin: 'maven'
 apply plugin: 'org.springframework.boot'
 
 jar {
-	baseName = 'SpringBoot-ShareBook'
+	baseName = 'sharebook'
 	version = '0.0.1-SNAPSHOT'
 }
 
