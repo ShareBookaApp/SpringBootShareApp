@@ -33,13 +33,10 @@
 </head>
 
 <body>
-<div ng-controller="loginCtrl">
-    <div ng-show="authenticated">
+<div>
         <div>
             <h2>Por favor seleccione el libro que desea ofrecer :</h2>
-            <select class="btn btn-default dropdown-toggle btn-select2 center" ng-options="item as item.nombre for item in misli" ng-model="selected.Id" def></select>
-
-
+            <select class="btn btn-default dropdown-toggle btn-select2 center" ng-options="item as item.nombre for item in misli" ng-model="selected" ></select>
         </div>
         <h2>Estos son los libros disponibles para Intercambiar:</h2>
 
@@ -62,10 +59,7 @@
             </b>
         </div>
     </div>
-    <div  ng-show="!authenticated">
-        <p><h1>Error:</h1>Ingrese con una cuenta valida!</p>
-    </div>
-</div>
+
 
 
 

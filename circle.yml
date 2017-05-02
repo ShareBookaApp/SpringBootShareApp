@@ -5,7 +5,7 @@ deployment:
   staging:
     branch: master
     heroku:
-      appname: sharebookapp
+      appname: sharebook
 test:
   override:
     - ./gradlew test -is
