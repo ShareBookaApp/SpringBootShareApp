@@ -7,15 +7,16 @@ angular.module('appMaps', ['ngRoute', 'uiGmapgoogle-maps'])
       });
     }])
 
-    .controller('mainCtrl', function($scope, $timeout, LibrosDispoFactory) {
+    .controller('mainCtrl', function($scope, $timeout, LibrosDispoFactory, LibroById,$mdDialog) {
     var markerId = 0;
     var libros = [];
     var data = [];
      $scope.listado = [];
-        $scope.listado = LibrosDispoFactory.query({username:'admin@sharebook.com'},function (response) {
+        $scope.listado = LibrosDispoFactory.query({username:localStorage.getItem("usuario")},function (response) {
             angular.forEach(response, function (item) {
                     data.push(item);
             });
+        $scope.listado = [];
             function refresh(marker) {
                 	 $timeout(function(){
                 		$scope.map.control.refresh({latitude: marker.latitude,
@@ -23,7 +24,7 @@ angular.module('appMaps', ['ngRoute', 'uiGmapgoogle-maps'])
                 		},3000);
                 	}
 
-                	function create(latitude, longitude) {
+                	function create(latitude, longitude, id) {
                 		var marker = {
                 			options: {
                 				animation: 1,
@@ -32,7 +33,7 @@ angular.module('appMaps', ['ngRoute', 'uiGmapgoogle-maps'])
                 			},
                 			latitude: latitude,
                 			longitude: longitude,
-                			id: ++markerId
+                			id: id
                 		};
                 		return marker;
                 	}
@@ -43,21 +44,35 @@ angular.module('appMaps', ['ngRoute', 'uiGmapgoogle-maps'])
                 		}
                 	}
 
-                	function createByCoords(latitude, longitude, successCallback) {
-                		var marker = create(latitude, longitude);
+                	function createByCoords(latitude, longitude, id, successCallback) {
+                		var marker = create(latitude, longitude, id);
                 		invokeSuccessCallback(successCallback, marker);
                 	}
                     for (i = 0; i < data.length; i++) {
-                        createByCoords(data[i].latitude, data[i].longitude, function (marker) {
-                                    console.info(data[i].latitude);
+                        createByCoords(data[i].latitude, data[i].longitude, data[i].id, function (marker) {
                             		marker.options.labelContent = data[i].nombre;
                             		marker.options.icon = '/app/imagenes/book.png';
                             		refresh(marker);
-
                             		libros.push(marker);
+
                             	});
                     }
 
+                    $scope.showConfirm = function(ev) {
+                           // Appending dialog to document.body to cover sidenav in docs app
+                           var confirm = $mdDialog.confirm()
+                                 .title('¿Quieres solicitar este libro?')
+                                 .textContent('Nombre: '+ev.nombre +'\n  Editorial: '+ev.editorial + '\n   Autor: ' + ev.autor)
+                                 .targetEvent(ev)
+                                 .ok('Solicitar!')
+                                 .cancel('Volver');
+
+                           $mdDialog.show(confirm).then(function() {
+
+                           }, function() {
+
+                           });
+                         };
 
                 	function createByCurrentLocation(successCallback) {
                     	if (navigator.geolocation) {
@@ -86,13 +101,36 @@ angular.module('appMaps', ['ngRoute', 'uiGmapgoogle-maps'])
                         		options : {
                         			scrollwheel: true
                         		},
+                        		window: {
+                                        model: {},
+                                        show: false,
+                                        options:{
+                                          pixelOffset: {width:-1,height:-20}
+                                        }
+                                      },
+                                markersEvents: {
+                                        click: function(marker, eventName, model, args) {
+
+                                          for (i = 0; i < data.length; i++) {
+                                                if(model.id === data[i].id){
+                                                    $scope.libroMarcador = data[i];
+                                                    $scope.nombrema = data[i].nombre;
+                                                    console.info("  "+data[i].nombre);
+                                                    }
+                                           }
+
+                                           $scope.map.window.model = model;
+                                            $scope.map.window.show = true;
+                                        }
+                                      },
                         		control: {}
                         	};
                 for (i = 0; i < libros.length; i++) {
                     $scope.map.markers.push(libros[i]);
-                    console.info(i);
+
                     }
         });
 
 
-           });
+           })
+           .controller('templateController',function($scope){});

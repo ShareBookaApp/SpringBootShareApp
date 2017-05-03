@@ -16,5 +16,8 @@
     "angular-google-maps": "2.0.23",
     "angular-bootstrap": "2.5.0",
     "bootstrap": "3.3.7"
+  },
+  "resolutions": {
+    "angular": "1.6.2"
   }
 }
