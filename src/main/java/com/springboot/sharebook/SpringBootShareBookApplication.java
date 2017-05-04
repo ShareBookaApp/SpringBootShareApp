@@ -31,7 +31,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class)
 @EnableJpaRepositories("com.springboot.sharebook.repositories")
 @EntityScan("com.springboot.sharebook.model")
 public class SpringBootShareBookApplication {
