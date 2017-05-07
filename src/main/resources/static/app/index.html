@@ -77,12 +77,16 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav" >
-                        <li ng-show="authenticated == 'true'"><a href="#!/publicarLibro">Publicar Libro</a></li>
-                        <li ng-show="authenticated"><a href="#!/librosDisponibles">Libros Disponibles</a></li>
-                        <li ng-show="authenticated"><a href="#!/intercambiar">Intercambiar Libros</a></li>
-                        <li ng-show="authenticated"><a href="#!/mapa">Mapa de libros</a></li>
-                         <li ng-show="authenticated"><a href="#!/misLibros">Mis Libros</a></li>
-                        <li><a ng-show="authenticated" href="#!/buscarLibros">Buscar Libros </a></li
+
+
+                        <li ><a   href="#">Home</a></li>
+                      
+                        <li><a ng-show="authenticated" href="#!/publicarLibro">Publicar Libro</a></li>
+                        <li><a ng-show="authenticated" href="#!/intercambiar">Intercambiar Libros</a></li>
+                        <li><a ng-show="authenticated" href="#!/mapa">Mapa de libros</a></li>
+                         <li><a ng-show="authenticated" href="#!/misLibros">Mis Libros</a></li>
+                        <li><a ng-show="authenticated" href="#!/buscarLibros">Buscar Libros </a></li>
+                        <li><a ng-show="authenticated" href="#!/solicitudes">Solicitudes </a></li>
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -131,10 +135,14 @@
    <script src="intercambiar/intercambiar.js"></script>
    <script src="librosDisponibles/librosDisponibles.js"></script>
    <script src="mapa/mapa.js"></script>
-   <script src="misLibros/misLibros.js"></script>
-   <script src="buscarLibros/buscarLibros.js"></script>
-   <script src="services/fabricaLibro.js"></script>
-   <script src="services/fabricaUser.js"></script>
+
+        <script src="misLibros/misLibros.js"></script>
+        <script src="buscarLibros/buscarLibros.js"></script>
+        <script src="solicitudes/solicitudes.js"></script>
+ <script src="services/fabricaLibro.js"></script>
+        <script src="services/fabricaUser.js"></script>
+
+
    <script src="components/version/version.js"></script>
    <script src="components/version/version-directive.js"></script>
    <script src="components/version/interpolate-filter.js"></script>
