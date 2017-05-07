@@ -36,6 +36,14 @@ CREATE TABLE USUARIOS (
     CONSTRAINT USUARIOS_pk PRIMARY KEY (email)
 );
 
+-- Table: USER_ROLE
+CREATE TABLE USER_ROLE (
+    USUARIOS_email varchar(100),
+    ROLE varchar(50),
+    constraint fk_authorities_users foreign key(USUARIOS_email) references USUARIOS(email));
+    create unique index ix_auth_email on USER_ROLE (USUARIOS_email,ROLE);
+);
+
 -- foreign keys
 -- Reference: LIBROS_USUARIOS (table: LIBROS)
 ALTER TABLE LIBROS ADD CONSTRAINT LIBROS_USUARIOS FOREIGN KEY LIBROS_USUARIOS (USUARIOS_email)
@@ -51,12 +59,20 @@ ALTER TABLE SOLICITUDES ADD CONSTRAINT SOLICITUDES_LIBROS2 FOREIGN KEY SOLICITUD
 
 -- End of file.
 
-INSERT INTO `USUARIOS` (`email`,`password`,`nombre`, `celular`, `imagen`, `role`)
+INSERT INTO `USUARIOS` (`email`,`password`,`nombre`, `celular`, `imagen`)
 	VALUES
-		('alejo@sharebook.com', 'password', 'Administrador Sharebook', '3103101010',LOAD_FILE('http://www.free-icons-download.net/images/administrator-icon-5154.png'), 'ROLE_ADMIN'),
-		('admin@sharebook.com', 'password', 'Administrador Sharebook', '3103101010',LOAD_FILE('http://www.free-icons-download.net/images/administrator-icon-5154.png'), 'ROLE_ADMIN'),
-        ('diego@sharebook.com', 'password', 'Diego Mendez', '3103101011',LOAD_FILE('https://scontent.fbog2-1.fna.fbcdn.net/v/t1.0-9/14449927_10209799835408003_5714881594361642354_n.jpg?oh=d140e3aadec6daf82b184b59c79699f4&oe=59593946'), 'ROLE_USER');
-        
+		('alejo@sharebook.com', 'password', 'Administrador Sharebook', '3103101010',LOAD_FILE('http://www.free-icons-download.net/images/administrator-icon-5154.png')),
+		('admin@sharebook.com', '$2a$06$9V.BEwKRg0dNBtwQu7CMouasoNBU9OWaiC2vinMc90pFY9LoTRcsW', 'Administrador Sharebook', '3103101010',LOAD_FILE('http://www.free-icons-download.net/images/administrator-icon-5154.png')),
+        ('diego@sharebook.com', '$2a$06$9V.BEwKRg0dNBtwQu7CMouasoNBU9OWaiC2vinMc90pFY9LoTRcsW', 'Diego Mendez', '3103101011',LOAD_FILE('https://scontent.fbog2-1.fna.fbcdn.net/v/t1.0-9/14449927_10209799835408003_5714881594361642354_n.jpg?oh=d140e3aadec6daf82b184b59c79699f4&oe=59593946'),
+        ('manuel@gmail.com', '$2a$06$9V.BEwKRg0dNBtwQu7CMouasoNBU9OWaiC2vinMc90pFY9LoTRcsW', 'Diego Mendez', '3103101011',LOAD_FILE('https://scontent.fbog2-1.fna.fbcdn.net/v/t1.0-9/14449927_10209799835408003_5714881594361642354_n.jpg?oh=d140e3aadec6daf82b184b59c79699f4&oe=59593946'));
+
+insert into USER_ROLE(USUARIOS_email, ROLE) values('alejo@sharebook.com', 'PREMIUM_MEMBER');
+insert into USER_ROLE(USUARIOS_email, ROLE) values('alejo@sharebook.com', 'ADMIN');
+insert into USER_ROLE(USUARIOS_email, ROLE) values('admin@sharebook.com', 'PREMIUM_MEMBER');
+insert into USER_ROLE(USUARIOS_email, ROLE) values('admin@sharebook.com', 'ADMIN');
+insert into USER_ROLE(USUARIOS_email, ROLE) values('diego@sharebook.com', 'PREMIUM_MEMBER');
+insert into USER_ROLE(USUARIOS_email, ROLE) values('diego@sharebook.com', 'ADMIN');
+
 INSERT INTO `LIBROS` (`Id`,`nombre`,`editorial`, `autor`, `imagen`, `latitude`, `longitude`, `USUARIOS_email`)
 VALUES
 	('1', 'La Biblia', 'Norma', 'Dios', LOAD_FILE('http://www.erroreshistoricos.com/images/stories/articulos/biblia.jpg'), 4.783699, -74.044713, 'admin@sharebook.com'),

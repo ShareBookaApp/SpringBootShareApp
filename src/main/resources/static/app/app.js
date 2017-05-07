@@ -8,6 +8,7 @@ angular.module('myApp', [
   'uiGmapgoogle-maps',
   'appMaps',
   'ngAnimate',
+  'ngStorage',
   'ui.bootstrap',
   'fileUpload',
   'myApp.login',
