@@ -20,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by Diego on 20/03/2017.
@@ -54,9 +55,9 @@ public class ApplicationServicesImpl implements ApplicationServices {
 
     @Override
     public void addLibro(Libro libro, String useremail) {
-        Usuario u = userrepo.findByEmail(useremail);
-        libro.setUsuario(u);
-        String id = u.getEmail()+libro.getNombre()+libro.getLatitude();
+        Optional<Usuario> u = userrepo.findByEmail(useremail);
+        libro.setUsuario(u.get());
+        String id = u.get().getEmail()+libro.getNombre()+libro.getLatitude();
         libro.setId(id.trim());
         librorepo.save(libro);
     }

@@ -1,11 +1,11 @@
 'use strict';
-angular.module('services.fabricaLibro', ['ngRoute','ngResource'])
+angular.module('services.fabricaLibro', ['ngRoute','ngResource', 'ngStorage'])
 
-    .factory('LibrosDispoFactory', function($resource) {
-            return $resource('/libros/disponibles/:username');
+    .factory('LibrosDispoFactory', function($http) {
+            return $http.get('/api/libros/disponibles/:username');
             })
     .factory('AddLibroFactory', function($resource) {
-                            return $resource('/libros/:useremail');
+                            return $resource('/api/libros/:useremail');
         })
 
    .factory('AddSolicitudFactory', function($resource) {
@@ -14,14 +14,14 @@ angular.module('services.fabricaLibro', ['ngRoute','ngResource'])
 
 
     .factory('fabricaBuscarLibro', function($resource) {
-                 return $resource('/libros/buscar/:bookname');
+                 return $resource('/api/libros/buscar/:bookname');
                  })
 
     .factory('AddLibroPictureFactory', function($resource) {
-                                return $resource('/libros/:idlibro/picture');
+                                return $resource('/api/libros/:idlibro/picture');
             })
     .factory('LibroById', function($resource) {
-                                    return $resource('/libros/:idlibro');
+                                    return $resource('/api/libros/:idlibro');
      })
 
 

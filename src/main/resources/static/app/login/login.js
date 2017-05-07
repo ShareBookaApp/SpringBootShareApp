@@ -9,15 +9,21 @@ angular.module('myApp.login', ['ngRoute'])
   });
 }])
 
-.controller('loginCtrl', ['$rootScope', '$scope', '$http', '$location', function ($scope, $rootScope, $http, $location) {
+.controller('loginCtrl', ['$rootScope', '$scope', '$http', '$location', '$localStorage', function ($scope, $rootScope, $http, $location, $localStorage) {
 
     var authenticate = function (credentials, callback) {
 
-        var headers = credentials ? {authorization: "Basic " + btoa(credentials.username + ":" + credentials.password)} : {};
-            $http.get('/app/user', {headers: headers}).then(function (data) {
+        //var headers = credentials ? {username: credentials.username, password: credentials.password} : {};
+            $http.post('/api/auth/login', {username: credentials.username, password: credentials.password}).then(function (data) {
                 console.log(data);
-                        if (data.data.name) {
+                        if (data.data.token) {
                             $rootScope.authenticated = true;
+                            console.log("oli");
+                            // store username and token in local storage to keep user logged in between page refreshes
+                            $localStorage.currentUser = { username: username, token: data.data.token };
+
+                            // add jwt token to auth header for all requests made by the $http service
+                            $http.defaults.headers.common['Authorization'] = 'Bearer ' + data.data.refreshToken;
 
                         } else {
                             $rootScope.authenticated = false;
@@ -30,7 +36,7 @@ angular.module('myApp.login', ['ngRoute'])
 
     };
 
-    authenticate();
+    //authenticate();
     $scope.credentials = {};
     $scope.login = function () {
         authenticate($scope.credentials, function () {

@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.sql.Blob;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -19,37 +20,42 @@ import java.util.Set;
 
 @Entity
 @Table(name = "USUARIOS")
-public class Usuario implements Serializable {
+public class Usuario {
 
+    @Id
+    @Column(name = "email")
     private String email;
 
     @NotEmpty
     @JsonIgnore
+    @Column(name = "password")
     private String password;
     @NotEmpty
+    @Column(name = "nombre")
     private String nombre;
+    @Column(name = "celular")
     private String celular;
+    @Column(name = "imagen")
+    @JsonIgnore
     private Blob imagen;
 
-    @NotEmpty
-    private Role role;
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name="USUARIOS_email", referencedColumnName="email")
+    private List<UserRole> roles;
 
-    public Usuario(String nombre, String password, String email, String celular, Blob imagen) {
+    public Usuario(String nombre, String password, String email, String celular, Blob imagen, List<UserRole> roles) {
         this.email = email;
         this.password = password;
         this.nombre = nombre;
         this.celular = celular;
         this.imagen = imagen;
+        this.roles = roles;
     }
 
     public Usuario(){
     }
 
 
-
-
-    @Id
-    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -58,7 +64,7 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
-    @Column(name = "password")
+
     public String getPassword() {
         return password;
     }
@@ -66,7 +72,7 @@ public class Usuario implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-    @Column(name = "nombre")
+
     public String getNombre() {
         return nombre;
     }
@@ -74,7 +80,7 @@ public class Usuario implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    @Column(name = "celular")
+
     public String getCelular() {
         return celular;
     }
@@ -82,8 +88,7 @@ public class Usuario implements Serializable {
     public void setCelular(String celular) {
         this.celular = celular;
     }
-    @Column(name = "imagen")
-    @JsonIgnore
+
     public Blob getImagen() {
         return imagen;
     }
@@ -92,13 +97,13 @@ public class Usuario implements Serializable {
         this.imagen = imagen;
     }
 
-    @Column(name = "role")
-    @Enumerated(EnumType.STRING)
-    public Role getRole() {
-        return role;
+
+    public List<UserRole> getRoles() {
+        return roles;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(List<UserRole> roles) {
+        this.roles = roles;
     }
+
 }

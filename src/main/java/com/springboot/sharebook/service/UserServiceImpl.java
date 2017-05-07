@@ -1,11 +1,11 @@
 package com.springboot.sharebook.service;
 
-import com.springboot.sharebook.model.Role;
 import com.springboot.sharebook.model.Usuario;
 import com.springboot.sharebook.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 /**
  * Created by alejandro on 22/03/17.
@@ -20,8 +20,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Usuario getUserByEmail(String username) {
-        return userRepository.findByEmail(username);
+    public Optional<Usuario> getUserByEmail(String username) {
+        return this.userRepository.findByEmail(username);
     }
 }
 
