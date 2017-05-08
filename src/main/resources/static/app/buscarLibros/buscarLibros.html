@@ -9,9 +9,20 @@
     <form>
     <h1>Nombre:</h1>
     <input type="text" ng-model="nombre" >
-        <td><button class="btn-primary" ng-click="showConfirm(nombre)">Buscar</button></td>
+        <td><button class="btn-primary" ng-click="buscador(nombre)">Buscar</button></td>
     </form>
 </div>
+<table id="tablaBuscar" class="table table-striped table-hover">
+    <tbody>
+    <tr ng-repeat="todo in listadoBuscar">
+        <td><image src="/libros/{{todo.id}}/picture" alt="" width="60" height="80"/></td>
+        <td>{{todo.nombre}}</td>
+        <td>{{todo.editorial}}</td>
+        <td>{{todo.autor}}</td>
+        <td><button class="btn btn-default" ng-click="">Solicitar</button></td>
+    </tr>
+    </tbody>
+</table>
 
 <div >
     <b id="status" layout="row" layout-align="center center" class="md-padding">

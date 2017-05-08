@@ -26,8 +26,11 @@ public interface ApplicationServices {
 
     public Libro getLibroById(String idLibro);
 
+    public List<Libro> buscarLibros(String bookname);
+
     public List<List<Libro>> getSolicitudesUsuario(String useremail);
 
     public void addSolicitud(Solicitud s, String id1,String id2) throws ParseException;
+
 
 }

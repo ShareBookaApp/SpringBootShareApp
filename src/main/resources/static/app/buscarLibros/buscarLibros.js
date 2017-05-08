@@ -9,10 +9,24 @@ angular.module('myApp.buscarLibros', ['ngRoute'])
   });
 }])
 
-.controller('buscarLibrosCtrl', ['$scope','fabricaBuscarLibro',function($scope,fabricaBuscarLibro) {
-    $scope.showConfirm = function(ev) {
-    console.log("Entro a buscar")
-        $scope.listado= fabricaBuscarLibro.query({bookname:localStorage.getItem(ev)});
+.controller('buscarLibrosCtrl', ['$scope','fabricaBuscarLibro','LibrosDispoFactory',function($scope,fabricaBuscarLibro,LibrosDispoFactory) {
+$scope.listadoBuscar= LibrosDispoFactory.query({username:localStorage.getItem("usuario")});
+    $scope.buscador = function(ev) {
+    $scope.listadoBuscar =[];
+    $scope.listadoBuscar= fabricaBuscarLibro.query({bookname:ev});
+
+    console.log("Entro a buscar " +ev+$scope.listadoBuscar.length);
+    //$scope.listado= fabricaBuscarLibro.query();
+
+        if($scope.listadoBuscar.length===0){
+          document.getElementById('status').innerHTML = 'No encontro resultados';
+          //$location.path("/buscarLibros");
+
+        }
+        else{
+            document.getElementById('status').innerHTML = 'Si encontro resultados';
+            $location.path("/buscarLibros");
+        }
 
 
            }
