@@ -1,5 +1,5 @@
 'use strict';
-angular.module('services.fabricaLibro', ['ngRoute','ngResource'])
+angular.module('services.fabricaLibro', ['ngRoute','ngResource', 'ngStorage'])
 
     .factory('LibrosDispoFactory', function($resource) {
             return $resource('/libros/disponibles/:username');
