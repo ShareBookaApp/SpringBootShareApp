@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  * Created by Diego on 21/03/2017.
  */
 @RestController
-@RequestMapping(path = "/api/libros")
+@RequestMapping(path = "/libros")
 public class LibrosController {
 
     @Autowired
