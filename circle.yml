@@ -1,17 +1,14 @@
 machine:
   java:
     version: oraclejdk8
-
 deployment:
   staging:
     branch: master
-    heroku: 
-      appname: sharebookapp
-
+    heroku:
+      appname: sharebook
 test:
+  override:
+    - ./gradlew test -is
   post:
-    - mvn site
-    - mkdir $CIRCLE_ARTIFACTS/reports
-    - exec cp -R target/site/* $CIRCLE_ARTIFACTS/reports
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-    - find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+    - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
