@@ -10,6 +10,12 @@ angular.module('myApp.registro', ['ngRoute'])
 }])
 
 .controller('registroCtrl', ['$rootScope', '$scope', '$http', '$location', 'fabricaUser', function ($scope, $rootScope, $http, $location, fabricaUser) {
+
+    var register = function (user){
+    }
+
+
+
 $scope.usuarios= fabricaUser.getUsuarios;
 $scope.updateFactory = function(nombre, email, password){
 var todo = {
