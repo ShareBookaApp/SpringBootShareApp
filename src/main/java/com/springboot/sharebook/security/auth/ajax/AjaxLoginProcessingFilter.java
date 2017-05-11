@@ -53,6 +53,7 @@ public class AjaxLoginProcessingFilter extends AbstractAuthenticationProcessingF
             throw new AuthMethodNotSupportedException("Authentication method not supported");
         }
 
+        System.out.print("AjaxLoginProcessingFilter"+request.toString());
         LoginRequest loginRequest = objectMapper.readValue(request.getReader(), LoginRequest.class);
 
         if (StringUtils.isBlank(loginRequest.getUsername()) || StringUtils.isBlank(loginRequest.getPassword())) {
