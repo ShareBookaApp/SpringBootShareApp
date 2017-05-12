@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Created by Diego on 20/03/2017.
+ * Created by Diego.
  */
 
 @Service
@@ -77,6 +77,21 @@ public class ApplicationServicesImpl implements ApplicationServices {
     public List<List<Libro>> getSolicitudesUsuario(String useremail) {
         List<List<Libro>> listaLibros = new LinkedList<>();
         List<Solicitud> solicitudes = solirepo.getPeticionesUsuario(useremail);
+        System.out.print("Hice la consulta  ");
+        for(int i=0; i<solicitudes.size(); i++){
+            System.out.print("Si encontre  "+ solicitudes.get(i).getLibro1().getId());
+            List<Libro> listSoli = new LinkedList<>();
+            listSoli.add(librorepo.findOne(solicitudes.get(i).getLibro1().getId()));
+            listSoli.add(librorepo.findOne(solicitudes.get(i).getLibro2().getId()));
+            listaLibros.add(listSoli);
+        }
+        return listaLibros;
+    }
+
+    @Override
+    public List<List<Libro>> getSolicitudesPendientes(String useremail) {
+        List<List<Libro>> listaLibros = new LinkedList<>();
+        List<Solicitud> solicitudes = solirepo.getSolicitudesUsuario(useremail);
         System.out.print("Hice la consulta  ");
         for(int i=0; i<solicitudes.size(); i++){
             System.out.print("Si encontre  "+ solicitudes.get(i).getLibro1().getId());
