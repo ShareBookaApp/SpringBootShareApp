@@ -30,4 +30,6 @@ public interface ApplicationServices {
 
     public void addSolicitud(Solicitud s, String id1,String id2) throws ParseException;
 
+    public Libro getBookByName(String bookname);
+
 }

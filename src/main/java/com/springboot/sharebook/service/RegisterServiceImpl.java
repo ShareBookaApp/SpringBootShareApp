@@ -6,7 +6,9 @@ import com.springboot.sharebook.repositories.RegisterRepository;
 import com.springboot.sharebook.repositories.RoleRepository;
 import com.springboot.sharebook.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -15,6 +17,7 @@ import java.util.List;
 /**
  * Created by daniel on 7/05/17.
  */
+@Service
 public class RegisterServiceImpl implements RegisterService{
 
     @Autowired

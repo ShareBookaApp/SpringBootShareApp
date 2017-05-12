@@ -22,4 +22,7 @@ public interface LibroRepository extends JpaRepository<Libro,String>{
 
     @Query("select imagen from Libro as l where l.id = ?1")
     Blob getLibroPicture(String id);
+
+    @Query("from Libro as l where l.nombre = ?1")
+    Libro getBookByname(String bookname);
 }
