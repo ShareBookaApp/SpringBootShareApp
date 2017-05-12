@@ -71,11 +71,11 @@ public class LibrosController {
 
     @RequestMapping(path = "/buscar/{bookname}", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<List<Libro>> getBuscarLibros(@PathVariable String bookname) {
+    public ResponseEntity<Libro> getBuscarLibros(@PathVariable String bookname) {
         try {
             
             System.out.println("ENTRO al api rest buscar : "+bookname);
-            return ResponseEntity.ok().body(services.traerLibrosDisponibles(bookname));
+            return ResponseEntity.ok().body(services.getBookByName(bookname));
             //return ResponseEntity.ok().body(services.traerLibrosDisponibles(bookname));
         } catch (Exception ex) {
             Logger.getLogger(LibrosController.class.getName()).log(Level.SEVERE, null, ex);

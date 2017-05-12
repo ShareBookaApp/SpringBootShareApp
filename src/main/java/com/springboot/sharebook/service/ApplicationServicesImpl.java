@@ -73,6 +73,10 @@ public class ApplicationServicesImpl implements ApplicationServices {
         return librorepo.findOne(idLibro);
     }
 
+    public Libro getBookByName(String bookname){
+        return librorepo.getBookByname(bookname);
+    }
+
     @Override
     public List<List<Libro>> getSolicitudesUsuario(String useremail) {
         List<List<Libro>> listaLibros = new LinkedList<>();
