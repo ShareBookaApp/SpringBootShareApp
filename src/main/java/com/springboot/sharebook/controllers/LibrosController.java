@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -71,11 +72,13 @@ public class LibrosController {
 
     @RequestMapping(path = "/buscar/{bookname}", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<Libro> getBuscarLibros(@PathVariable String bookname) {
+    public ResponseEntity<List<Libro>> getBuscarLibros(@PathVariable String bookname) {
         try {
             
             System.out.println("ENTRO al api rest buscar : "+bookname);
-            return ResponseEntity.ok().body(services.getBookByName(bookname));
+            List<Libro> l = new ArrayList<Libro>();
+            l.add(services.getBookByName(bookname));
+            return ResponseEntity.ok().body(l);
             //return ResponseEntity.ok().body(services.traerLibrosDisponibles(bookname));
         } catch (Exception ex) {
             Logger.getLogger(LibrosController.class.getName()).log(Level.SEVERE, null, ex);
