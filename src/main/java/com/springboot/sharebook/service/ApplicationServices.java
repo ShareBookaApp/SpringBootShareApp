@@ -28,6 +28,8 @@ public interface ApplicationServices {
 
     public List<List<Libro>> getSolicitudesUsuario(String useremail);
 
+    public List<List<Libro>> getSolicitudesPendientes(String useremail);
+
     public void addSolicitud(Solicitud s, String id1,String id2) throws ParseException;
 
     public Libro getBookByName(String bookname);

@@ -36,6 +36,19 @@ public class SolicitudController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @RequestMapping(path = "/usuario/pendientes/{username}", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<List<List<Libro>>> getSoliPendientes(@PathVariable String username) {
+        try {
+            System.out.print("Siiii  "+username+ "  lllllll");
+            return ResponseEntity.ok().body(services.getSolicitudesPendientes(username+".com"));
+        } catch (Exception ex) {
+            System.out.print("Noooooo  "+username+ "  lllllll");
+            Logger.getLogger(SolicitudController.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
   
   @RequestMapping(path = "/{id1}/{id2}", method = RequestMethod.POST)
     public ResponseEntity<?> addSoliocitud(@RequestBody Solicitud s, @PathVariable String id1,@PathVariable String id2){
